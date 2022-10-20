@@ -14,14 +14,13 @@ function getEmployeeOncal(endpoint) {
             let h = "";
             for (let i = 0; i < data.length; i++)
                 h += `
-                    <tr id="row${data[i][0]}">
-                        <td>${i + 1}</td>
-                        <td>${data[i][1]} ${data[i][2]}</td>
-                        <td>${data[i][3]}</td>
-                        <td>${data[i][5]}</td>
+                    <tr id="row${data[i].id}">
+                        <td></td>
+                        <td>${data[i].firstName} ${data[i].lastName}</td>
+                        <td>${data[i].position}</td>
                         <td>
-                            <div class="spinner-border text-secondary" style="display:none" id="load${data[i][0]}"></div>
-                            <button class="btn far fa-calendar-alt" data-bs-toggle="modal" onclick="fonCall('${endpoint}', ${data[i][0]})"></button>
+                            <div class="spinner-border text-secondary" style="display:none" id="load${data[i].id}"></div>
+                            <button class="btn far fa-calendar-alt" data-bs-toggle="modal" onclick="fonCall('${endpoint}', ${data[i].id})"></button>
                         </td>
                     </tr>
                     `;
@@ -60,8 +59,8 @@ function fonCall(endpoint, id) {
     }).then(function (data) {
         console.info(data);
         for (let i = 0; i < data.length; i++)
-            if (data[i][0] == id)
-                document.getElementById('employeeId').setAttribute('value', data[i][0]);
+            if (data[i].id == id)
+                document.getElementById('employeeId').setAttribute('value', data[i].id);
     }).catch(function (err) {
         console.error(err);
     });
@@ -78,7 +77,7 @@ function getOnCall(endpoint) {
             for (let i = 0; i < data.length; i++)
                 h += `
                     <tr id="row2${data[i][0]}">
-                        <td>${i + 1}</td>
+                        <td></td>
                         <td>${data[i][3]} ${data[i][4]}</td>
                         <td>${data[i][1]} ${data[i][2]}</td>
                         <td>${moment(data[i][5]).format("DD/MM/YYYY")}</td>
@@ -144,7 +143,7 @@ function checkValidate() {
     let dateOfBirthValues = date.value;
 
     var todayCheck = new Date();
-    todayCheck.setDate(todayCheck.getDate() - 1);
+    todayCheck.setDate(todayCheck.getDate());
     var dateOfBirthCheck = new Date(dateOfBirthValues);
 
     let isCheck = true;

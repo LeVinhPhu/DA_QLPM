@@ -41,7 +41,6 @@ public interface UserService extends UserDetailsService{
     int countAdmin();
 
     //----------Chuc nang cua vai tro Employee-------------
-    List<Object[]> getEmployeeOnCall(Map<String, String> params, int page);
 
     int countEmployee();
 

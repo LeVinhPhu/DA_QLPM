@@ -35,19 +35,21 @@
             </div>
         </a>
     </div>
-    <div class = "col-md-1 col-12 mt-2 mb-2" style="align-items: center;">
-        <a href="/Web_QuanLyPhongMach/admins/adminsManager" style="color: black; text-decoration: none">
-            <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">
-                <div class="mt-3 mb-2">
-                    <img class="card-img-top"
-                         src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1662556012/Web_QLPM/Avatar/writing_hkvivo.png"
-                         alt="Card image"
-                         style="width:50%">
+    <c:if test="${currentUser.userRole.equals('ROLE_SUPERADMIN')}">
+        <div class = "col-md-1 col-12 mt-2 mb-2" style="align-items: center;">
+            <a href="/Web_QuanLyPhongMach/admins/adminsManager" style="color: black; text-decoration: none">
+                <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">
+                    <div class="mt-3 mb-2">
+                        <img class="card-img-top"
+                             src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1662556012/Web_QLPM/Avatar/writing_hkvivo.png"
+                             alt="Card image"
+                             style="width:50%">
+                    </div>
+                    <h6 class="card-title" style="font-size: 13px;font-weight: bold">QL Admin</h6>
                 </div>
-                <h6 class="card-title" style="font-size: 13px;font-weight: bold">QL Admin</h6>
-            </div>
-        </a>
-    </div>    
+            </a>
+        </div>    
+    </c:if>    
     <div class = "col-md-1 col-12 mt-2 mb-2" style="align-items: center;">
         <a href="/Web_QuanLyPhongMach/admins/employeesManager" style="color: black; text-decoration: none">
             <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">
@@ -120,7 +122,7 @@
 
 
 <div class="row mt-4 mb-5">
-    <div class="col-md-5 col-12 shadow">
+    <div class="col-md-4 col-12 shadow">
         <div style="text-align: center;" ><h4>DANH SÁCH NHÂN VIÊN</h4></div>
         <div class="col-md-12 col-12 mt-2" style="overflow: auto; height: 500px; border-radius: 10px">
             <table class="table table-hover ">
@@ -130,7 +132,6 @@
                     </th>
                     <th>Họ và tên</th>
                     <th>Chức vụ</th>
-                    <th>Chuyên khoa</th>
                     <th></th>
                 </tr>
                 <tbody id="myEmployeeOnCall">
@@ -139,7 +140,7 @@
         </div>
     </div>
 
-    <div class="col-md-7 col-12 shadow">
+    <div class="col-md-8 col-12 shadow">
         <div style="text-align: center;" ><h4>LỊCH PHÂN CÔNG</h4></div>
         <div class="col-md-12 col-12 mt-2" style="overflow: auto; height: 500px; border-radius: 10px">   
             <table class="table table-hover">
@@ -230,7 +231,7 @@
 <script>document.getElementById('adminId').value = "${currentUser.id}";</script>
 
 <script>
-    <c:url value="/api/employeesOncall" var="u" />
+    <c:url value="/api/employeesManager" var="u" />
     <c:url value="/api/onCallManager" var="ocl" />
     window.onload = function () {
         getEmployeeOncal("${u}"),

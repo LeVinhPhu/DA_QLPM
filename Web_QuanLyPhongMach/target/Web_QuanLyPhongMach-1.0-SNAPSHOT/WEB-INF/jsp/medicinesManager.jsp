@@ -35,19 +35,21 @@
             </div>
         </a>
     </div>
-    <div class = "col-md-1 col-12 mt-2 mb-2" style="align-items: center;">
-        <a href="/Web_QuanLyPhongMach/admins/adminsManager" style="color: black; text-decoration: none">
-            <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">
-                <div class="mt-3 mb-2">
-                    <img class="card-img-top"
-                         src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1662556012/Web_QLPM/Avatar/writing_hkvivo.png"
-                         alt="Card image"
-                         style="width:50%">
+    <c:if test="${currentUser.userRole.equals('ROLE_SUPERADMIN')}">
+        <div class = "col-md-1 col-12 mt-2 mb-2" style="align-items: center;">
+            <a href="/Web_QuanLyPhongMach/admins/adminsManager" style="color: black; text-decoration: none">
+                <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">
+                    <div class="mt-3 mb-2">
+                        <img class="card-img-top"
+                             src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1662556012/Web_QLPM/Avatar/writing_hkvivo.png"
+                             alt="Card image"
+                             style="width:50%">
+                    </div>
+                    <h6 class="card-title" style="font-size: 13px;font-weight: bold">QL Admin</h6>
                 </div>
-                <h6 class="card-title" style="font-size: 13px;font-weight: bold">QL Admin</h6>
-            </div>
-        </a>
-    </div>    
+            </a>
+        </div>    
+    </c:if>  
     <div class = "col-md-1 col-12 mt-2 mb-2" style="align-items: center;">
         <a href="/Web_QuanLyPhongMach/admins/employeesManager" style="color: black; text-decoration: none">
             <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">

@@ -9,8 +9,6 @@
 <%@ taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-
-
 <div class="row  mb-4 mt-3" style="">
     <div class="col-md-5 col-12">
         <div class="mt-3">
@@ -35,19 +33,21 @@
             </div>
         </a>
     </div>
-    <div class = "col-md-1 col-12 mt-2 mb-2" style="align-items: center;">
-        <a href="/Web_QuanLyPhongMach/admins/adminsManager" style="color: black; text-decoration: none">
-            <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">
-                <div class="mt-3 mb-2">
-                    <img class="card-img-top"
-                         src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1662556012/Web_QLPM/Avatar/writing_hkvivo.png"
-                         alt="Card image"
-                         style="width:50%">
+    <c:if test="${currentUser.userRole.equals('ROLE_SUPERADMIN')}">
+        <div class = "col-md-1 col-12 mt-2 mb-2" style="align-items: center;">
+            <a href="/Web_QuanLyPhongMach/admins/adminsManager" style="color: black; text-decoration: none">
+                <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">
+                    <div class="mt-3 mb-2">
+                        <img class="card-img-top"
+                             src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1662556012/Web_QLPM/Avatar/writing_hkvivo.png"
+                             alt="Card image"
+                             style="width:50%">
+                    </div>
+                    <h6 class="card-title" style="font-size: 13px;font-weight: bold">QL Admin</h6>
                 </div>
-                <h6 class="card-title" style="font-size: 13px;font-weight: bold">QL Admin</h6>
-            </div>
-        </a>
-    </div>    
+            </a>
+        </div>    
+    </c:if>   
     <div class = "col-md-1 col-12 mt-2 mb-2" style="align-items: center;">
         <a href="/Web_QuanLyPhongMach/admins/employeesManager" style="color: black; text-decoration: none">
             <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">
@@ -115,13 +115,38 @@
     </div>
 </div>   
 
+<div class="row mb-5 mt-2">
+    <div class="col-md-6 col-12"  style="text-align: center;">
+        <div style="color: black; border: none" class="card bg-light">
+            <h2 style="text-align: center; margin-top: 10px">QUẢN LÝ THỐNG KÊ</h2>
+        </div>
+    </div>
+    <div class="col-md-2 col-12">
+        <a href="/Web_QuanLyPhongMach/admins/reportsManager" style="color: black; text-decoration: none">
+            <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">
+                <h6 class="card-title mt-3 mb-3" style="font-size: 15px;font-weight: bold">Doanh thu</h6>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-2 col-12">
+        <a href="/Web_QuanLyPhongMach/admins/reports2Manager" style="color: black; text-decoration: none">
+            <div class="card bg-light rounded-3" style="text-align: center; align-items: center;border: none">
+                <h6 class="card-title mt-3 mb-3" style="font-size: 15px;font-weight: bold">Số lượng Bệnh nhân</h6>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-2 col-12">
+        <a href="/Web_QuanLyPhongMach/admins/reports3Manager" style="color: black; text-decoration: none">
+            <div class="card bg-light rounded-3" style="text-align: center; align-items: center;border: none">
+                <h6 class="card-title mt-3 mb-3" style="font-size: 15px;font-weight: bold">Tần suất sử dụng Thuốc</h6>
+            </div>
+        </a>
+    </div>
+</div>
 
-<h2 style="text-align: center; margin-top: 10px">QUẢN LÝ DOANH THU</h2>
-
-
-<div class="row mb-2 mt-2">
+<div class="row mb-5 mt-5 d-flex justify-content-center">
     <div data-bs-toggle="modal" data-bs-target="#myModal0" class="col-md-2 col-12"  style="text-align: center;">
-        <div style="color: black; border: none" class="card bg-light shadow rounded-3"">
+        <div style="color: black; border: none" class="card bg-light shadow rounded-3">
             <div class="mt-4 mb-3">
                 <img class="card-img-top"
                      src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1662562119/Web_QLPM/Avatar/turnover_xyafsh.png"
@@ -133,28 +158,26 @@
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#myModal" class="col-md-2 col-12"  style="text-align: center;">
-        <div style="color: black; border: none" class="card bg-light shadow rounded-3"">
+        <div style="color: black; border: none" class="card bg-light shadow rounded-3">
             <div class="mt-4 mb-3">
                 <img class="card-img-top"
                      src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1662562119/Web_QLPM/Avatar/statistics_2_r18oez.png"
                      alt="Card image"
                      style="width:40%">
             </div>
-            <h6 class="card-title">Doanh Thu Theo Năm</h6>
+            <h6 class="card-title">Theo Năm</h6>
         </div>
     </div>
-</div>
 
-<div class="row mb-2 mt-2">
     <div data-bs-toggle="modal" data-bs-target="#myModal2" class="col-md-2 col-12"  style="text-align: center;">
-        <div style="color: black; border: none" class="card bg-light shadow rounded-3"">
+        <div style="color: black; border: none" class="card bg-light shadow rounded-3">
             <div class="mt-4 mb-3">
                 <img class="card-img-top"
                      src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1662562259/Web_QLPM/Avatar/pie-graph_1_dwafob.png"
                      alt="Card image"
                      style="width:40%">
             </div>
-            <h6 class="card-title">Doanh Thu Theo Quý</h6>
+            <h6 class="card-title">Theo Quý</h6>
         </div>
         <c:if test="${err1 != null}">
             <div class="mt-1">
@@ -165,14 +188,14 @@
         </c:if>
     </div>
     <div data-bs-toggle="modal" data-bs-target="#myModal3" class="col-md-2 col-12"  style="text-align: center;">
-        <div style="color: black; border: none" class="card bg-light shadow rounded-3"">
+        <div style="color: black; border: none" class="card bg-light shadow rounded-3">
             <div class="mt-4 mb-3">
                 <img class="card-img-top"
                      src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1662562119/Web_QLPM/Avatar/diagram_phb81d.png"
                      alt="Card image"
                      style="width:40%">
             </div>
-            <h6 class="card-title">Doanh Thu Theo Tháng</h6u>
+            <h6 class="card-title">Theo Tháng</h6>
         </div>
         <c:if test="${err2 != null}">
             <div class="mt-1">
