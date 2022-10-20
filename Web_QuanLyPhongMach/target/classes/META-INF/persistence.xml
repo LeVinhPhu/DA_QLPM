@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.vpdq_Web_QuanLyPhongMach_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.vpdq.pojo.Medicine</class>
+    <class>com.vpdq.pojo.Prescription</class>
+    <class>com.vpdq.pojo.Degree</class>
+    <class>com.vpdq.pojo.MedicalService</class>
+    <class>com.vpdq.pojo.MedicalRecord</class>
+    <class>com.vpdq.pojo.Supplier</class>
+    <class>com.vpdq.pojo.Department</class>
+    <class>com.vpdq.pojo.User</class>
+    <class>com.vpdq.pojo.OnCall</class>
+    <class>com.vpdq.pojo.Appointment</class>
+    <class>com.vpdq.pojo.Unit</class>
+    <class>com.vpdq.pojo.Status</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/quanlyphongmachdb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="123456789"/>
+    </properties>
+  </persistence-unit>
+</persistence>

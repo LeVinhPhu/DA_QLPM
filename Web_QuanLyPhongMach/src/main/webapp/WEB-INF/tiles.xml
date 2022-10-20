@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache
+Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="baseLayout"
+                template="/WEB-INF/layout/base.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header"
+                       value="/WEB-INF/layout/header.jsp" />
+        <put-attribute name="content" value="" />
+        <put-attribute name="footer"
+                       value="/WEB-INF/layout/footer.jsp" />
+    </definition>
+    
+    <!--Các Trang Phụ-->
+    
+    <definition name="home" extends="baseLayout">
+        <put-attribute name="title" value="Trang chủ" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/home.jsp" />
+    </definition>
+    <definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="Đăng nhập" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/login.jsp" />
+    </definition>
+    <definition name="register" extends="baseLayout">
+        <put-attribute name="title" value="Đăng ký" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/register.jsp" />
+    </definition>
+    
+    <!--Admin Quản Lý-->
+    
+    <definition name="adminIndex" extends="baseLayout">
+        <put-attribute name="title" value="Admin" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/adminIndex.jsp" />
+    </definition>
+    
+    <definition name="adminsManager" extends="baseLayout">
+        <put-attribute name="title" value="Quản Lý Admin" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/adminsManager.jsp" />
+    </definition>
+    
+    <definition name="updateAdmin" extends="baseLayout">
+        <put-attribute name="title" value="Sửa Thông Tin Admin" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/updateAdmin.jsp" />
+    </definition>
+    
+    <definition name="employeesManager" extends="baseLayout">
+        <put-attribute name="title" value="Quản Lý Nhân Viên" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/employeesManager.jsp" />
+    </definition>
+    
+    <definition name="customersManager" extends="baseLayout">
+        <put-attribute name="title" value="Quản Lý Khách Hàng" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/customersManager.jsp" />
+    </definition>
+    
+    <definition name="reportsManager" extends="baseLayout">
+        <put-attribute name="title" value="Báo Cáo Thống Kê" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/reportsManager.jsp" />
+    </definition>
+    
+    <definition name="reports2Manager" extends="baseLayout">
+        <put-attribute name="title" value="Báo Cáo Thống Kê" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/reports2Manager.jsp" />
+    </definition>
+    
+    <definition name="reports3Manager" extends="baseLayout">
+        <put-attribute name="title" value="Báo Cáo Thống Kê" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/reports3Manager.jsp" />
+    </definition>
+    <definition name="medicinesManager" extends="baseLayout">
+        <put-attribute name="title" value="Quản Lý Thuốc" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/medicinesManager.jsp" />
+    </definition>
+    <definition name="updateMedicine" extends="baseLayout">
+        <put-attribute name="title" value="Chi tiết thuốc" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/updateMedicine.jsp" />
+    </definition>
+    <definition name="onCallManager" extends="baseLayout">
+        <put-attribute name="title" value="Quản Lý Lịch Trực" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/onCallManager.jsp" />
+    </definition>
+    
+    <definition name="adminsProfile" extends="baseLayout">
+        <put-attribute name="title" value="Trang cá nhân" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/adminsProfile.jsp" />
+    </definition>
+    
+    <definition name="updateEmployee" extends="baseLayout">
+        <put-attribute name="title" value="Sửa Thông Tin Nhân Viên" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/updateEmployee.jsp" />
+    </definition>
+    
+    <!--Bác sĩ quản lý-->
+    
+    <definition name="doctorsIndex" extends="baseLayout">
+        <put-attribute name="title" value="Bác Sĩ" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/doctorsIndex.jsp" />
+    </definition>
+    
+    <definition name="medicalRecord" extends="baseLayout">
+        <put-attribute name="title" value="Phiếu Khám Bệnh" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/medicalRecord.jsp" />
+    </definition>
+    
+    <definition name="prescription" extends="baseLayout">
+        <put-attribute name="title" value="Toa Thuốc" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/prescription.jsp" />
+    </definition>
+    
+    <definition name="prescribeTheDrug" extends="baseLayout">
+        <put-attribute name="title" value="Kê Toa Thuốc" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/prescribeTheDrug.jsp" />
+    </definition>
+    <!--Ý tá quản lý-->
+    
+    <definition name="nursesIndex" extends="baseLayout">
+        <put-attribute name="title" value="Y tá" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/nursesIndex.jsp" />
+    </definition>
+    
+    <definition name="appointmentsManager" extends="baseLayout">
+        <put-attribute name="title" value="Quản Lý Lịch Khám" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/appointmentsManager.jsp" />
+    </definition>
+    
+    <definition name="billsManager" extends="baseLayout">
+        <put-attribute name="title" value="Quản Lý Hoá Đơn" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/billsManager.jsp" />
+    </definition>
+    
+    <definition name="billsManagerForPayment" extends="baseLayout">
+        <put-attribute name="title" value="Thanh toán" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/billsManagerForPayment.jsp" />
+    </definition>
+    
+    <definition name="employeesProfile" extends="baseLayout">
+        <put-attribute name="title" value="Trang cá nhân" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/employeesProfile.jsp" />
+    </definition>
+    
+    <!--Khách hàng quản lý-->
+    
+    <definition name="customersIndex" extends="baseLayout">
+        <put-attribute name="title" value="Khách Hàng" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/customersIndex.jsp" />
+    </definition>
+    
+    <definition name="appointments" extends="baseLayout">
+        <put-attribute name="title" value="Đặt Lịch Khám" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/appointments.jsp" />
+    </definition>
+    
+    <definition name="customersProfile" extends="baseLayout">
+        <put-attribute name="title" value="Trang cá nhân" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/customersProfile.jsp" />
+    </definition>
+    
+</tiles-definitions>
+
