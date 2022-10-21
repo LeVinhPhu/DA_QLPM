@@ -9,7 +9,7 @@ function deleteMedicine(endpoint, id, btn) {
     }).then(function (data) {
         a = true;
         for (let i = 0; i < data.length; i++)
-            if (data[i][0] == id)
+            if (data[i][0] === id)
             {
                 alert("Ràng buộc khoá ngoại, không thể xoá thuốc " + data[i][1] + " !");
                 a = false;
@@ -146,7 +146,10 @@ function checkValidate() {
     }
 
     // Kiểm tra số lượng
-    if (quantityValues !== '') {
+    if (quantityValues === '') {
+        setError(quantity, 'Số lượng không được để trống!');
+        isCheck = false;
+    } else if (quantityValues !== '') {
         if (quantityValues < 0) {
             setError(quantity, 'Số lượng phải lớn hơn hoặc bằng 0!');
             isCheck = false;
@@ -172,7 +175,7 @@ function detailMedicines(endpoint, id) {
         console.info(data);
         let h = "";
         for (let i = 0; i < data.length; i++)
-            if (data[i][0] == id)
+            if (data[i][0] === id)
             {
                 h += `
                 <div style="text-align: center" class="boder rounded bg-light"> 
@@ -181,24 +184,22 @@ function detailMedicines(endpoint, id) {
                         class="rounded-circle"
                         height="70"
                         width="70"
-                        alt="Black and White Portrait of a Man"
+                        alt="Medicine's name"
                         loading="lazy"
                         />
                     <h6>${data[i][1]}</h6>
                 </div>
 
                 <div>
-                    <h6>Ngày sinh:</h6>
-                    <h6>Giới tính: </h6>
-                    <h6>Chức vụ: Bác sĩ</h6> 
-                    <h6>Chuyên ngành: </h6>
-                    <h6>Địa chỉ:</h6>
-                    <h6>Email:</h6>
-                    <h6>Phone: </h6>
-                    <h6>Username: </h6>
-                    <h6>Password: </h6>
+                    <h6>Mã thuốc: ${data[i][0]}</h6>
+                    <h6>Đơn vị: ${data[i][4]}</h6>
+                    <h6>Số lượng: ${data[i][2]}</h6>
+                    <h6>Đơn giá: ${data[i][3]}</h6>
+                    <h6>Nhà cung cấp: ${data[i][7]}</h6>
+                    <h6>Ghi chú: ${data[i][6]}</h6>
+                    
                 </div>
-            `
+            `;
             }
         let d = document.getElementById("detailMedicine");
         d.innerHTML = h;

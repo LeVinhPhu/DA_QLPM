@@ -78,7 +78,10 @@ function checkValidateForUpdate() {
     }
 
     // Kiểm tra số lượng
-    if (mQuantityValues < 0) {
+    if (mQuantityValues === '') {
+        setError(mQuantity, 'Số lượng không được để trống!');
+        isCheck = false;
+    } else if (mQuantityValues < 0) {
         setError(mQuantity, 'Số lượng phải lớn hơn hoặc bằng 0!');
         isCheck = false;
     }

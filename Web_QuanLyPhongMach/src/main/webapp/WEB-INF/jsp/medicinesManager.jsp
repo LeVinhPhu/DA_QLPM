@@ -137,7 +137,7 @@
 
                         <div class="form-floating input-row">
                             <form:input type="text" path="name" class="form-control" id="name" placeholder="Nhap ten" name="name" />
-                            <label for="name">Tên thuốc</label>
+                            <label for="name">Tên thuốc <span style="color: red">*</span></label>
                             <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                             <small></small>
                         </div>
@@ -153,20 +153,20 @@
 
                         <div class="form-floating input-row">
                             <form:input type="number" path="unitPrice" class="form-control" id="unitPrice" placeholder="Nhap gia" name="unitPrice" />
-                            <label for="unitPrice">Đơn giá</label>
+                            <label for="unitPrice">Đơn giá <span style="color: red">*</span></label>
                             <%--<form:errors path="unitPrice" element="div" cssClass="alert alert-danger" />--%>
                             <small></small>
                         </div>
 
                         <div class="form-floating input-row">
                             <form:input type="number" path="quantity" class="form-control" id="quantity" placeholder="Nhap so luong" name="quantity" />
-                            <label for="quantity">Số lượng</label>
+                            <label for="quantity">Số lượng <span style="color: red">*</span></label>
                             <small></small>
                         </div>
 
                         <div class="form-floating input-row">
                             <form:select path="supplierId" class="form-select" id="supplierId" name="supplierId">
-                                <option disabled="disabled" selected="selected" value=""}>Chọn nhà cung cấp</option>
+<!--                                <option disabled="disabled" selected="selected" value=""}>Chọn nhà cung cấp</option>-->
                                 <c:forEach items="${suppliers}" var="s">
                                     <option value="${s.id}">${s.companyName}</option>
                                 </c:forEach>

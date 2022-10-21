@@ -40,7 +40,7 @@
 
         <div class="form-floating input-row">
             <form:input type="number" path="quantity" class="form-control" id="mQuantity" placeholder="Nhap so luong" name="quantity" />
-            <label for="quantity">Số lượng</label>
+            <label for="quantity">Số lượng <span style="color: red">*</span></label>
             <small></small>
         </div>
         <div class="form-floating input-row">

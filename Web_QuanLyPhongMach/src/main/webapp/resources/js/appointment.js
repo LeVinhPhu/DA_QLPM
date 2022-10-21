@@ -65,6 +65,7 @@ function deleteAppointment(endpoint, id, btn) {
                     btn.style.display = "block";
                     load.style.display = "none";
                 });
+                location.reload(true);
             }
         }
     });
@@ -125,4 +126,83 @@ function getAppointmentForNurse(endpoint) {
     }).catch(function (err) {
         console.error(err);
     });
+}
+
+
+//đặt phiếu khám
+const date = document.getElementById('date');
+const time = document.getElementById('time');
+const btnSubmit = document.getElementById('btnSubmit');
+const input = document.querySelectorAll('.input-row');
+
+var temp = 0;
+btnSubmit.addEventListener('click', function () {
+    Array.from(input).map((ele) =>
+        ele.classList.remove('error')
+    );
+
+    let flag = checkValidate();
+    //nếu còn lỗi --> không load lại trang
+    if (!flag) {
+        $(document).ready(function () {
+            $('#MyFormAppointment').submit(function (e) {
+                e.preventDefault();
+            });
+        });
+        temp++;
+    }
+
+    if (flag && temp >= 1) {
+        $(document).ready(function () {
+            $('form').submit(function () {
+                $.ajax({
+                    method: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize()
+                });
+            });
+        });
+        alert('Đặt lịch thành công');
+        location.reload(true);
+    }
+
+    if (flag && temp === 0) {
+        alert('Đặt lịch thành công');
+        location.reload(true);
+    }
+});
+
+function checkValidate() {
+    let dateValues = date.value;
+    let timeValues = time.value;
+    
+    var today = new Date();
+    today.setDate(today.getDate() + 1);
+    var dateInAppointment = new Date(dateValues);
+    
+    let isCheck = true;
+
+    // Kiểm tra ngày
+    if (dateValues === '') {
+        setError(date, 'Ngày không được để trống!');
+        isCheck = false;
+    } else if (dateInAppointment < today) {
+        setError(date, 'Ngày hẹn không hợp lệ!');
+        isCheck = false;
+    }
+
+    // Kiểm tra giờ
+    if (timeValues === '') {
+        setError(time, 'Giờ không được để trống!');
+        isCheck = false;
+    }
+
+    return isCheck;
+}
+
+//SET LỖI
+function setError(err, message) {
+    let parentEle = err.parentNode;
+    parentEle.classList.add('error');
+    parentEle.querySelector('small').innerText = message;
 }

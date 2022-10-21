@@ -38,10 +38,12 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
         s.setId(1);
         a.setStatusId(s);
 
-        try {
+        try
+        {
             session.save(a);
             return true;
-        } catch (HibernateException ex) {
+        } catch (HibernateException ex)
+        {
             System.err.println(ex.getMessage());
         }
         return false;
@@ -61,13 +63,15 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
                 b.equal(aRoot.get("statusId"), sRoot.get("id")),
                 b.equal(aRoot.get("statusId"), 1));
 
-        if (idCus < 0) {
+        if (idCus < 0)
+        {
             q.where(b.equal(aRoot.get("customerId"), cRoot.get("id")),
                     b.equal(aRoot.get("statusId"), sRoot.get("id")),
                     b.equal(aRoot.get("statusId"), 2));
         }
 
-        if (idCus > 0) {
+        if (idCus > 0)
+        {
             q.where(b.equal(aRoot.get("customerId"), cRoot.get("id")),
                     b.equal(aRoot.get("statusId"), sRoot.get("id")),
                     b.equal(cRoot.get("id"), idCus),
@@ -93,11 +97,13 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
     public boolean deleteAppointment(int id) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
 
-        try {
+        try
+        {
             Appointment a = session.get(Appointment.class, id);
             session.delete(a);
             return true;
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
             ex.printStackTrace();
             return false;
         }
@@ -111,10 +117,12 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
         Status s = new Status();
         s.setId(status);
         a.setStatusId(s);
-        try {
+        try
+        {
             session.update(a);
             return true;
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
             ex.printStackTrace();
         }
         return false;
@@ -144,7 +152,7 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
         Root<User> croot = q.from(User.class);
         q.where(p.equal(aroot.get("id"), idAp),
                 p.equal(aroot.get("customerId"), croot.get("id")));
-        
+
         q.multiselect(croot.get("id"),
                 croot.get("email"),
                 aroot.get("date"));
@@ -171,19 +179,19 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
     @Override
     public boolean checkAppointmentExists(int idCus) {
         boolean kq = false;
-//        Session session = this.sessionFactory.getObject().getCurrentSession();
-//        CriteriaBuilder builder = session.getCriteriaBuilder();
-//
-//        CriteriaQuery<Appointment> query = builder.createQuery(Appointment.class);
-//        Root<Appointment> root = query.from(Appointment.class);
-//        query.select(root);
-//        query.where(builder.equal(root.get("customerId"), idCus),
-//                builder.or(builder.equal(root.get("statusId"), 1), builder.equal(root.get("statusId"), 2)));
-//        
-//        Appointment a = session.createQuery(query).uniqueResult();
-//        
-//        if(a.getStatusId().getId()==1 || a.getStatusId().getId()==2)
-//            kq= true;
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        CriteriaQuery<Appointment> query = builder.createQuery(Appointment.class);
+        Root<Appointment> root = query.from(Appointment.class);
+
+        query.select(root);
+        query.where(builder.equal(root.get("customerId"), idCus),
+                builder.or(builder.equal(root.get("statusId"), 1), builder.equal(root.get("statusId"), 2)));
+
+        if (session.createQuery(query).uniqueResult() != null)
+            kq = true;
+    
         return kq;
     }
 }

@@ -73,7 +73,7 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
     }
 
     @Override
-    public boolean payment(int idM, int idNurse, Date date) {
-        return this.medicalRecordRepository.payment(idM, idNurse, date);
+    public boolean payment(int idM, int idNurse, Date date, Long total) {
+        return this.medicalRecordRepository.payment(idM, idNurse, date, total);
     }
 }

@@ -46,8 +46,8 @@ public class PrescriptionRepositoryImpl implements PrescriptionRepository {
         Root pRoot = q.from(Prescription.class);
         Root<Medicine> mRoot = q.from(Medicine.class);
         
-        q.where(b.equal(mRoot.get("id"), pRoot.get("medicine")));
-        
+        q.where(b.equal(mRoot.get("id"), pRoot.get("medicineId")));
+
         q.multiselect(mRoot.get("id"), mRoot.get("name"));
         
         Query<Object[]> query = session.createQuery(q);
@@ -79,12 +79,12 @@ public class PrescriptionRepositoryImpl implements PrescriptionRepository {
         Root cRoot = q.from(User.class);
         Root uRoot = q.from(Unit.class);
 
-        q.where(b.equal(pRoot.get("medicalRecord"), mRoot.get("id")),
-                b.equal(pRoot.get("medicine"), medicineRoot.get("id")),
-                b.equal(pRoot.get("medicine"), medicineRoot.get("id")),
-                b.equal(mRoot.get("customer"), cRoot.get("id")),
-                b.equal(medicineRoot.get("unit"), uRoot.get("id")),
-                b.equal(pRoot.get("medicalRecord"), id)
+        q.where(b.equal(pRoot.get("medicalRecordId"), mRoot.get("id")),
+                b.equal(pRoot.get("medicineId"), medicineRoot.get("id")),
+                b.equal(pRoot.get("medicineId"), medicineRoot.get("id")),
+                b.equal(mRoot.get("customerId"), cRoot.get("id")),
+                b.equal(medicineRoot.get("unitId"), uRoot.get("id")),
+                b.equal(pRoot.get("medicalRecordId"), id)
                 );
 
         q.multiselect(mRoot.get("id"),

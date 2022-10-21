@@ -95,10 +95,12 @@ Toa thuốc
                 </tbody>
             </table>
 <div>Tiền thuốc: <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${medicalPayment[0][5]}" /> VNĐ</div>
+
 <div>Tổng tiền: <fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${medicalPayment[0][6]}" /> VNĐ</div>
 <c:url value="/employees/billsManager/${medicalRecordID}" var="action"></c:url>
 <form method="post" action="${action}">
     <div class="form-floating"  style="text-align: center">
+        <input type="hidden" class="form-control" value="${medicalPayment[0][6]}" name="totals">
         <input type="submit" value="Thanh toán" class="btn btn-primary"/>
     </div>
 </form>

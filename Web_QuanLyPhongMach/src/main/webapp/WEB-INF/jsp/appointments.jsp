@@ -65,8 +65,10 @@
 
 
 <h2 style="text-align: center; margin-top: 10px">DANH SÁCH ĐĂNG KÝ KHÁM BỆNH</h2>
-
+<c:if test="${check == 0}">
     <div data-bs-toggle="modal" data-bs-target="#myModal" style="margin: 8px; width: 20%;"><i class="fas fa-plus"></i>  Đặt lịch</div>
+</c:if>
+    
     <!--đặt lịch khám-->
     <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -82,7 +84,7 @@
                 <div class="modal-body">
                     <div>
                         <c:url value="/customers/appointments" var="action" />
-                        <form:form method="post" action="${action}" modelAttribute="setAppointments">
+                        <form:form method="post" action="${action}" modelAttribute="setAppointments" id="MyFormAppointment">
                             <div class="input-row form-floating">
                                 <form:input path="date" class="form-control" type="date" id="date" name="date" />
                                 <label for="date">Chọn ngày</label>

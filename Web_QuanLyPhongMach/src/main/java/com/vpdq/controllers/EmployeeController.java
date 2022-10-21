@@ -206,13 +206,14 @@ public class EmployeeController {
     
     @PostMapping("/billsManager/{medicalRecordID}")
     public String payment (Model model, HttpSession session,
-            @PathVariable(value = "medicalRecordID") int medicalRecordID) {
+            @PathVariable(value = "medicalRecordID") int medicalRecordID,
+            @RequestParam(value = "totals", defaultValue = "0L", required = false) Long totals) {
         
         model.addAttribute("medicalRecordID", medicalRecordID);
         java.util.Date date = new java.util.Date();
         User e = (User) session.getAttribute("currentUser");
-        
-        if(this.medicalRecordService.payment(medicalRecordID, e.getId(), date)){
+//        Long total = 0L;
+        if(this.medicalRecordService.payment(medicalRecordID, e.getId(), date, totals)){
             model.addAttribute("medicalRecordForNurse", this.medicalRecordService.getMedicalRecordForPayment());
             return "billsManager";
         }

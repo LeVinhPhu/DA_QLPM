@@ -22,6 +22,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -48,6 +49,7 @@ public class Appointment implements Serializable {
     @NotNull
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     @Basic(optional = false)
     @NotNull

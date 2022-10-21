@@ -276,14 +276,14 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
     }
 
     @Override
-    public boolean payment(int idM, int idNurse, Date date) {
+    public boolean payment(int idM, int idNurse, Date date, Long total) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         MedicalRecord m = getMedicalRecordByID(idM);
         
         User nurse = new User();
         nurse.setId(idNurse);
         m.setNurseId(nurse);
-        
+        m.setTotal(total);
         m.setBillingDate(date);
         try {
             session.update(m);

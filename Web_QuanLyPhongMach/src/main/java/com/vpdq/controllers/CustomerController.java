@@ -53,12 +53,14 @@ public class CustomerController {
         model.addAttribute("setAppointments", new Appointment());
         model.addAttribute("currentUser", session.getAttribute("currentUser"));
         
-//        Customer c1 = (Customer) session.getAttribute("currentUser");
-//        int check=1;
-//        if(this.appointmentService.checkAppointmentExists(2)==false)
-//            check=0;
-//        
-//        model.addAttribute("check", check);
+        User c1 = (User) session.getAttribute("currentUser");
+        int check=1;
+        if(this.appointmentService.checkAppointmentExists(c1.getId())==false)
+            check=0;
+        if(this.appointmentService.checkAppointmentExists(c1.getId())==true)
+            check=1;
+        
+        model.addAttribute("check", check);
         
         User cs = (User) session.getAttribute("currentUser");
         Search.setIdCus(cs.getId());
@@ -70,12 +72,14 @@ public class CustomerController {
     public String addAppointments(Model model, HttpSession session,
             @ModelAttribute(value = "setAppointments") Appointment a) {
         User c = (User) session.getAttribute("currentUser");
+        
         a.setCustomerId(c);
         
         if (this.appointmentService.addAppointment(a)) {
             return "appointments";
         }
-        return "appointments";
+        return "redirect:appointments";
+//        return "appointments";
     }
 
     //

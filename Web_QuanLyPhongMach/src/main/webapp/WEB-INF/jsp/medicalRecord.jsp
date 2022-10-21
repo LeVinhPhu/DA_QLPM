@@ -70,7 +70,7 @@
 <form:form id="myForm" method="post" action="${action}" modelAttribute="medicalRecord" enctype="multipart/form-data">
 
     <div class="form-floating input-row">
-        <form:select path="serviceId" class="form-select" id="serviceId" name="serviceId">
+        <form:select path="medicalServiceId" class="form-select" id="medicalServiceId" name="medicalServiceId">
             <c:forEach items="${services}" var="s">
                 <option value="${s.id}">${s.name}</option>
             </c:forEach>
