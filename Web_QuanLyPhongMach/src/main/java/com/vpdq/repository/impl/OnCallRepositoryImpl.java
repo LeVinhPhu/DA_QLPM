@@ -48,9 +48,9 @@ public class OnCallRepositoryImpl implements OnCallRepository {
         Root<OnCall> oclRoot = q.from(OnCall.class);
         Root<Department> dRoot = q.from(Department.class);
         
-        q.where(b.equal(oclRoot.get("admin"), aRoot.get("id")),
-                b.equal(oclRoot.get("employee"), eRoot.get("id")),
-                b.equal(oclRoot.get("department"), dRoot.get("id")));
+        q.where(b.equal(oclRoot.get("adminId"), aRoot.get("id")),
+                b.equal(oclRoot.get("employeeId"), eRoot.get("id")),
+                b.equal(oclRoot.get("departmentId"), dRoot.get("id")));
         q.multiselect(
                 oclRoot.get("id"),
                 aRoot.get("firstName"),

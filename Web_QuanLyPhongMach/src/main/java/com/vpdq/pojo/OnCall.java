@@ -22,6 +22,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -47,6 +48,7 @@ public class OnCall implements Serializable {
     @NotNull
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     @Size(max = 200)
     @Column(name = "note")
@@ -145,5 +147,5 @@ public class OnCall implements Serializable {
     public String toString() {
         return "com.vpdq.pojo.OnCall[ id=" + id + " ]";
     }
-    
+
 }

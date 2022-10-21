@@ -65,7 +65,7 @@ public class UserRepositoryImpl implements UserRepository {
         u.setPhone(user.getPhone());
         u.setSpecialize(user.getSpecialize());
         u.setUsername(user.getUsername());
-        if(user.getImage() != null){
+        if (user.getImage() != null) {
             u.setImage(user.getImage());
         }
         try {
@@ -272,31 +272,6 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     //----------Chuc nang cua vai tro Employee-------------
-    @Override
-    public List<Object[]> getEmployeeOnCall(Map<String, String> params, int page) {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder b = session.getCriteriaBuilder();
-        CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
-        Root<User> eRoot = q.from(User.class);
-
-        q.where(b.or(b.equal(eRoot.get("userRole"), "ROLE_DOCTOR"), b.equal(eRoot.get("userRole"), "ROLE_NURSE")));
-
-        q.orderBy(b.asc(eRoot.get("id")));
-
-        if (params != null) {
-            List<Predicate> predicates = new ArrayList<>();
-            String kw = params.get("kw");
-
-            if (kw != null && !kw.isEmpty()) {
-                q = q.where(b.like(eRoot.get("lastName").as(String.class), String.format("%%%s%%", kw)));
-            }
-        }
-
-        Query<Object[]> query = session.createQuery(q);
-
-        return query.getResultList();
-    }
-
     @Override
     public int countEmployee() {
         return 0;

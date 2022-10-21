@@ -80,11 +80,6 @@ public class ApiController {
         return new ResponseEntity<>(this.userService.getUserEmployee(null, 0), HttpStatus.OK);
     }
 
-    @GetMapping("/employeesOncall")
-    public ResponseEntity<List<Object[]>> listEmployeeOncall() {
-        return new ResponseEntity<>(this.userService.getEmployeeOnCall(null, 0), HttpStatus.OK);
-    }
-
     @DeleteMapping("/employeesManager/{employeeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteEmployee(@PathVariable(value = "employeeId") int employeeId) {

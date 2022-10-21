@@ -131,10 +131,6 @@ public class UserServiceImpl implements UserService {
     }
 
     //----------Chuc nang cua vai tro Employee-------------
-    @Override
-    public List<Object[]> getEmployeeOnCall(Map<String, String> params, int page) {
-        return this.userRepository.getEmployeeOnCall(params, page);
-    }
 
     @Override
     public List<User> getUserEmployee(Map<String, String> params, int page) {
