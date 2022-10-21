@@ -86,8 +86,7 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
                 cRoot.get("firstName"),
                 cRoot.get("lastName"),
                 sRoot.get("id"),
-                sRoot.get("name"),
-                aRoot.get("id"));
+                sRoot.get("name"));
 
         Query<Object[]> query = session.createQuery(q);
         return query.getResultList();

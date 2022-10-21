@@ -36,30 +36,29 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author vinhp
  */
-
 @Controller
 @ControllerAdvice
 @RequestMapping("/employees")
 public class EmployeeController {
 
-    @Autowired 
+    @Autowired
     private UserService userService;
 
-    @Autowired 
+    @Autowired
     private MedicalServiceService medicalServiceService;
 
     @Autowired
     private MedicalRecordService medicalRecordService;
-    
+
     @Autowired
     private AppointmentService appointmentService;
-    
+
     @Autowired
     private PrescriptionService prescriptionService;
-    
+
     @Autowired
     private MedicineService medicineService;
-    
+
     //dung chung
     @ModelAttribute
     public void commonAttribute(Model model) {
@@ -67,20 +66,18 @@ public class EmployeeController {
         model.addAttribute("appointments", this.appointmentService.getAppointment(0));
         model.addAttribute("medicine", this.medicineService.getMedicines(null, 0));
     }
-    
+
     //Bác sĩ quản lý
-    
     @GetMapping("/doctorsIndex")
-    public String doctorsIndex (){
+    public String doctorsIndex() {
         return "doctorsIndex";
     }
-    
+
     @GetMapping("/doctorsProfile")
-    public String doctorsProfile (){
+    public String doctorsProfile() {
         return "doctorsProfile";
     }
-    
-    
+
     @GetMapping("/medicalRecord/{cusID}")
     public String medicalRecord(Model model, @PathVariable(value = "cusID") int cusID) {
 
@@ -111,15 +108,16 @@ public class EmployeeController {
         if (this.medicalRecordService.addMedicalRecord(m) == true)
         {
             Appointment a1 = this.appointmentService.getAppointmentByIdCustomer(cusID);
-            
+
             if (this.appointmentService.changeStatusAppointmentByID(a1.getId(), 3))
-            return "redirect:/employees/prescription";
+            {
+                return "redirect:/employees/prescription";
+            }
         }
 
         return "medicalRecord";
     }
-    
-    
+
     //Hiển thị các phiếu khám bệnh
     @GetMapping("/prescription")
     public String prescription(Model model) {
@@ -132,18 +130,19 @@ public class EmployeeController {
     public String postprescription(Model model) {
         return "prescription";
     }
-    
-    
+
     //KÊ TOA THUỐC
     @GetMapping("/prescription/{medicalRecordID}")
     public String prescriptions(Model model,
             @PathVariable(value = "medicalRecordID") int medicalRecordID,
             @RequestParam(value = "kw", defaultValue = "", required = false) String kw,
             @RequestParam Map<String, String> params) {
-         
+
         model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(null));
         if (kw != null && !kw.isEmpty())
-             model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(kw));
+        {
+            model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(kw));
+        }
 
         model.addAttribute("prescription", new Prescription());
         model.addAttribute("medicalRecordID", medicalRecordID);
@@ -166,83 +165,89 @@ public class EmployeeController {
         m.setId(medicalRecordID);
         p.setMedicalRecordId(m);
 
-        if (addMedicine != 0) {
-            if (this.prescriptionService.addPrescription(p) == true) {
+        if (addMedicine != 0)
+        {
+            if (this.prescriptionService.addPrescription(p) == true)
+            {
                 model.addAttribute("medicineInPrescription", this.prescriptionService.getPreByMedicalRecordID(medicalRecordID));
                 model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(null));
                 model.addAttribute("info", this.medicalRecordService.getInfoMedicalRecordByID(medicalRecordID));
                 if (kw != null && !kw.isEmpty())
+                {
                     model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(kw));
+                }
                 return "prescribeTheDrug";
-                
-             
+
             }
         }
 
         return "redirect:prescription";
     }
-    
+
     //Y tá quản lý
-    
     @GetMapping("/nursesIndex")
-    public String nursesIndex (Model model, HttpSession session){
-        model.addAttribute("currentUser",session.getAttribute("currentUser"));
+    public String nursesIndex(Model model, HttpSession session) {
+        model.addAttribute("currentUser", session.getAttribute("currentUser"));
         return "nursesIndex";
     }
-    
+
     @GetMapping("/billsManager")
-    public String billsManager (Model model){
+    public String billsManager(Model model) {
         model.addAttribute("medicalRecordForNurse", this.medicalRecordService.getMedicalRecordForPayment());
         return "billsManager";
     }
-    
+
     @GetMapping("/billsManager/{medicalRecordID}")
-    public String billsManagerByID (Model model,
-             @PathVariable(value = "medicalRecordID") int medicalRecordID){
+    public String billsManagerByID(Model model,
+            @PathVariable(value = "medicalRecordID") int medicalRecordID) {
         model.addAttribute("medicalPayment", this.medicalRecordService.getMedicalRecordForPaymentByID(medicalRecordID));
         model.addAttribute("medicineInPrescription", this.prescriptionService.getPreByMedicalRecordID(medicalRecordID));
         return "billsManagerForPayment";
     }
-    
+
     @PostMapping("/billsManager/{medicalRecordID}")
-    public String payment (Model model, HttpSession session,
+    public String payment(Model model, HttpSession session,
             @PathVariable(value = "medicalRecordID") int medicalRecordID,
             @RequestParam(value = "totals", defaultValue = "0L", required = false) Long totals) {
-        
+
         model.addAttribute("medicalRecordID", medicalRecordID);
         java.util.Date date = new java.util.Date();
         User e = (User) session.getAttribute("currentUser");
 //        Long total = 0L;
-        if(this.medicalRecordService.payment(medicalRecordID, e.getId(), date, totals)){
+        if (this.medicalRecordService.payment(medicalRecordID, e.getId(), date, totals))
+        {
             model.addAttribute("medicalRecordForNurse", this.medicalRecordService.getMedicalRecordForPayment());
             return "billsManager";
         }
-            
+
         return "billsManagerForPayment";
     }
-   
-    
+
     @GetMapping("/appointmentsManager")
-    public String appointmentsManager (Model model){
+    public String appointmentsManager(Model model) {
         return "appointmentsManager";
     }
-    
+
     @PostMapping("/appointmentsManager")
     public String ChangeStatusForAppointment(Model model,
-            @RequestParam(value = "idAppointment") int idAppointment) throws MessagingException, UnsupportedEncodingException {
+            @RequestParam(value = "idAppointment", defaultValue = "0", required = false) int idAppointment) throws MessagingException, UnsupportedEncodingException {
+
+        if (idAppointment == 0)
+            return "appointmentsManager";
 
         if (this.appointmentService.changeStatusAppointmentByID(idAppointment, 2))
-        { 
+        {
             Object[] ob = this.appointmentService.getCusFromAppointmentById(idAppointment).get(0);
             String contentbody = "P&QCLINIC - Đã xác nhận lịch khám của bạn"
-                     + ". Xin Cảm ơn.";
+                    + ". Xin Cảm ơn.";
             String mail = (String) ob[1];
             Mail.SendEmail(contentbody, mail);
             return "nursesIndex";
         }
         return "appointmentsManager";
+
     }
-    
+
     //Trang Ca nhan Admin
     @GetMapping("/employeesProfile")
     public String employeeProfile(Model model, HttpSession session) {
@@ -255,12 +260,14 @@ public class EmployeeController {
     public String updateProfileEmployee(HttpSession session,
             @ModelAttribute(value = "updateProfileEmployee") @Valid User e,
             BindingResult r) {
-        if (r.hasErrors()) {
+        if (r.hasErrors())
+        {
             return "employeesProfile";
             //return lổi
         }
         User e2 = (User) session.getAttribute("currentUser");
-        if (this.userService.updateUser(e2.getId(), e) == true) {
+        if (this.userService.updateUser(e2.getId(), e) == true)
+        {
             return "redirect:updateProfileEmployee"; //return về trang gì đó
         }
         return "updateProfileEmployee";
