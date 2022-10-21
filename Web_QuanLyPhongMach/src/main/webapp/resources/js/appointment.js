@@ -97,8 +97,7 @@ function getAppointmentForDoctor(endpoint) {
 
 function getAppointmentForNurse(endpoint) {
     fetch(endpoint).then(function (res) {
-        return  res.json();
-    }).then(function (data) {
+        return  res.json();    }).then(function (data) {
         let d = document.getElementById("myAppointmentForNurse");
         if (d !== null) {
             let h = "";
