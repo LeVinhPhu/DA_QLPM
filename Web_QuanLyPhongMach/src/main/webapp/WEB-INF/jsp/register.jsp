@@ -58,15 +58,18 @@
                 <small>Error</small>
             </div>
             <div class="form-floating input-row">
-                <form:input type="number" path="phoneNumber" class="form-control" id="phoneNumber" placeholder="Nhap SDT" name="name" />
-                <label for="name">Số điện thoại <span style="color: red">*</span></label>
+                <form:input type="number" path="phone" class="form-control" id="phone" placeholder="Nhap SDT" name="phone" />
+                <label for="phone">Số điện thoại:<span style="color: red">*</span></label>
                 <small>Error</small>
 
             </div>
-            <!--    <div class="mb-2 mt-3">
-                    <label style="margin-left: 4.5%;" class="ml-2"for="file">Chọn ảnh</label>
-            <%--<form:input type="file" path="file" id="file" class="form-control" />--%>
-        </div>-->    
+            <div class="form-floating input-row">
+                <form:input type="text" path="username" class="form-control" id="username" placeholder="Nhap Username" name="username" />
+                <label for="username">Nhập tài khoản:<span style="color: red">*</span></label>
+                <small>Error</small>
+
+            </div>
+                
             <div class="form-floating input-row">
                 <form:input type="password" path="password" class="form-control" id="password" placeholder="Mat khau" name="p" />
                 <label for="p">Mật khẩu <span style="color: red">*</span></label>
@@ -81,7 +84,7 @@
             <div class="mt-2" style="text-align: center">
                 <input id="btnRegister" type="submit" value="Đăng ký" class="btn btn-primary" />
             </div>
-              
+
             <div class="form-floating mb-4" style="text-align: center">
                 <span style="font-size: 12px">Bạn đã có tài khoản? <a href="/Web_QuanLyPhongMach/login/roleCustomer" style="text-decoration: none">Đăng nhập</a></span>
             </div>

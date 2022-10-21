@@ -8,7 +8,8 @@
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
-const phone = document.getElementById('phoneNumber');
+const phone = document.getElementById('phone');
+const username = document.getElementById('username');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
 const dateOfBirth = document.getElementById('birthday');
@@ -35,14 +36,14 @@ btnSubmit.addEventListener('click', function () {
             });
         });
     } else {
-        fetch('/Web_QuanLyPhongMach/api/phoneNumber').then(function (res) {
+        fetch('/Web_QuanLyPhongMach/api/username').then(function (res) {
             return  res.json();
         }).then(function (data) {
             let check = true;
             for (let i = 0; i < data.length; i++)
-                if (data[i] == phone.value) {
+                if (data[i] == username.value) {
                     check = false;
-                    setError(phone, 'Số điện thoại đã tồn tại');
+                    setError(username, 'Tài khoản đã tồn tại');
                 }
             if (check)
                 window.location = "/Web_QuanLyPhongMach/login";
@@ -56,6 +57,7 @@ function checkValidate() {
     let lastNameValues = lastName.value;
     let emailValues = email.value;
     let phoneValues = phone.value;
+    let usernameValues = username.value;
     let passwordValues = password.value;
     let confirmPasswordValues = confirmPassword.value;
     let dateOfBirthValues = dateOfBirth.value;
@@ -76,6 +78,11 @@ function checkValidate() {
         isCheck = false;
     }
 
+    //Kiểm tra username
+    if (usernameValues === '') {
+        setError(username, 'Tài khoản không được để trống');
+        isCheck = false;
+    }
     //Kiểm tra mật khẩu
     if (passwordValues === '') {
         setError(password, 'Mật khẩu không được để trống');

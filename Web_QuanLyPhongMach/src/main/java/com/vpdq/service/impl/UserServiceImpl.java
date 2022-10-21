@@ -105,8 +105,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAllPhoneNumber() {
-        return this.userRepository.getAllPhoneNumber();
+    public List<User> getAllUsername() {
+        return this.userRepository.getAllUsername();
     }
 
     @Override

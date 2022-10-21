@@ -96,9 +96,8 @@
         <form:input type="text" path="note" class="form-control" id="note" placeholder="Ghi chu" name="note" />
         <label for="note">Ghi chú</label>
     </div>
-
-    <div class="form-floating mt-2">
-        <input type="submit" id="btnAdd" value="Lập phiếu" class="btn mb-3 mt-3 btn btn-primary"/>
+        <div class="form-floating mb-3 mt-2" style="text-align: right">
+        <input type="submit" id="btnAdd" value="Lập phiếu" class="btn btn btn-primary"/>
     </div>
 
 </form:form>  

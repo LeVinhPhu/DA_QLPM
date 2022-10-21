@@ -39,6 +39,8 @@ public class UserController {
     public String registers(Model model,
             @ModelAttribute(value = "customers") User customer) {
         String errMsg = "";
+        customer.setUserRole("ROLE_CUSTOMER");
+        customer.setPosition("Khách hàng");
         if (customer.getPassword().equals(customer.getConfirmPassword())) {
             if (this.userService.addUser(customer) == true) {
                 return "redirect:/login";

@@ -27,7 +27,7 @@ public interface UserRepository {
 
     List<User> getUserByRole(Map<String, String> params, int page, String role);
     
-    List<User> getAllPhoneNumber();
+    List<User> getAllUsername();
 
     boolean check(String phone);
     

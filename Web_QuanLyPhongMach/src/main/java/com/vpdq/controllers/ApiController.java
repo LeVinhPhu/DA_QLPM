@@ -64,9 +64,9 @@ public class ApiController {
         this.medicineService.deleteMedicine(id);
     }
 
-    @GetMapping("/phoneNumber")
-    public ResponseEntity<List<User>> listPhoneNumber() {
-        return new ResponseEntity<>(this.userService.getAllPhoneNumber(), HttpStatus.OK);
+    @GetMapping("/username")
+    public ResponseEntity<List<User>> listUserName() {
+        return new ResponseEntity<>(this.userService.getAllUsername(), HttpStatus.OK);
     }
 
     @GetMapping("/prescription")

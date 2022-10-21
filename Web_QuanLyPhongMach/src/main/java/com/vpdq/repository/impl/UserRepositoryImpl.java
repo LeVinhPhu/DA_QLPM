@@ -161,8 +161,17 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public List<User> getAllPhoneNumber() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<User> getAllUsername() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<User> q = b.createQuery(User.class);
+        Root root = q.from(User.class);
+        q.select(root);
+        q.where(b.equal(root.get("userRole"), "ROLE_CUSTOMER"));
+        q.select(root.get("username"));
+        Query query = session.createQuery(q);
+        return query.getResultList();
     }
 
     @Override

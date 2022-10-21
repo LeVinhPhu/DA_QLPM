@@ -65,7 +65,6 @@ function deleteAppointment(endpoint, id, btn) {
                     btn.style.display = "block";
                     load.style.display = "none";
                 });
-                location.reload(true);
             }
         }
     });
@@ -175,11 +174,11 @@ btnSubmit.addEventListener('click', function () {
 function checkValidate() {
     let dateValues = date.value;
     let timeValues = time.value;
-    
+
     var today = new Date();
     today.setDate(today.getDate() + 1);
     var dateInAppointment = new Date(dateValues);
-    
+
     let isCheck = true;
 
     // Kiểm tra ngày

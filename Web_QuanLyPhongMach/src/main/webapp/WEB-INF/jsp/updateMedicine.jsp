@@ -8,11 +8,10 @@
 <%@ taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<h3 style="text-align: center">${medicine1.name}</h3>
 <div style="text-align: center">
     <img src="${medicine1.image}" width='150' />
 </div>
-
+<h3 style="text-align: center">${medicine1.name}</h3>
 <c:url value="/admins/medicinesManager/${medicine1.id}" var="action" />
 <form:form id="formUpdate" method="post" action="${action}" modelAttribute="medicine1" enctype="multipart/form-data">
     <div style="width: 50%; margin-left: 25%">
@@ -53,17 +52,16 @@
             <label for="sup" class="form-label">Nhà cung cấp</label>
         </div>
         <div class="input-row">
-            <label style="margin-left: 4.5%;" class="ml-2"for="file">Chọn ảnh</label>
+            <label class="ml-2"for="file">Chọn ảnh</label>
             <form:input type="file" path="file" name="file" id="file" class="form-control" />
         </div>
         <div class="form-floating input-row">
             <form:input type="text" path="note" class="form-control" id="name" placeholder="Nhap ten" name="name" />
             <label for="name">Ghi chú</label>
         </div>
-        <div>
-            <input id="btnUpdate" type="submit" value="Sửa thuốc" class="btn btn-warning mb-3 mt-3" />
+            <div class="mt-2 mb-3" style="text-align: right">
+            <input id="btnUpdate" type="submit" value="Sửa thuốc" class="btn btn-warning" />
         </div>    
-
     </div>
 
 
