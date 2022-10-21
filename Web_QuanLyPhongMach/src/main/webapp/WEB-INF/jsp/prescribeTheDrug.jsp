@@ -67,7 +67,7 @@
             <div class="modal-body">
 
                 <c:url value="/employees/prescription/${medicalRecordID}" var="action" />
-                <form:form method="post" action="${action}" modelAttribute="prescription" enctype="multipart/form-data">
+                <form:form method="post" action="${action}" modelAttribute="prescription" enctype="multipart/form-data" id="FormAddMedicine">
                     <div class="form-floating input-row">
                         <form:select path="medicineId" class="form-select" id="medicineId" name="medicineId">
                             <c:forEach items="${medicine}" var="m">
@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="form-floating input-row">
-                        <form:input type="number" path="quantity" class="form-control" id="quantity" placeholder="Nhap so luong" name="name" />
+                        <form:input type="number" path="quantity" class="form-control" id="quantityMedicine" placeholder="Nhap so luong" name="name" />
                         <label for="name">Số lượng</label>
                         <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                         <small></small>
@@ -92,7 +92,7 @@
 
                     <div class="form-floating mt-2">
                         <input type="number" style="display: none" name="addMedicine" value="1"/>
-                        <input type="submit" value="Thêm thuốc" class="btn btn-primary mb-3 mt-3"/>
+                        <input type="submit" value="Thêm thuốc" id="btnAddMedicine" class="btn btn-primary mb-3 mt-3"/>
                     </div>
 
                 </form:form>
@@ -190,6 +190,7 @@
     </div>
 </div>
 
+<script src="<c:url value="/js/prescribeTheDrug.js" />"></script>
 
 
 

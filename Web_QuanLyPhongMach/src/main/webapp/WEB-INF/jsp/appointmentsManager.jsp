@@ -76,7 +76,8 @@
                     <th>Tên khách hàng</th>
                     <th>Ngày</th>
                     <th>Giờ</th>
-                    <th></th>
+                    <th>Chọn trước khi xác nhận</th>
+                    <th><button type="submit" class="btn btn-primary" > Xác nhận và gửi mail <i class="fa fa-check-double"></i></button></td></th>
                 </tr>
                 <tbody id="myAppointmentForNurse">
                     <%--<c:forEach items="${appointments}" var="a">--%>

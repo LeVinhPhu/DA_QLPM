@@ -23,7 +23,7 @@ function getAppointment(endpoint) {
                         <td>${data[i][8]}</td>
                         <td>
                             <div class="spinner-border text-warning" style="display:none" id="load${data[i][0]}"></div>
-                            <i onclick="deleteAppointment('${endpoint + "/" + data[i][0]}', ${data[i][0]}, this)" class="fas fa-trash-alt"></i>
+                            <i onclick="deleteAppointment('${endpoint + "/" + data[i][0]}', ${data[i][0]})" class="fas fa-trash-alt"></i>
                         </td>
                     </tr>
                     `;
@@ -37,7 +37,7 @@ function getAppointment(endpoint) {
 
 
 // XOÁ PHIẾU ĐẶT (khách hàng)
-function deleteAppointment(endpoint, id, btn) {
+function deleteAppointment(endpoint, id) {
     fetch('/Web_QuanLyPhongMach/api/appointment').then(function (res) {
         return  res.json();
     }).then(function (data) {
@@ -50,21 +50,17 @@ function deleteAppointment(endpoint, id, btn) {
             }
         if (a) {
             if (confirm("Bạn có chắc chắn xoá?") === true) {
-                let r = document.getElementById(`row${id}`);
-                let load = document.getElementById(`load${id}`);
-                load.style.display = "block";
-                btn.style.display = "none";
                 fetch(endpoint, {
                     method: 'delete'
                 }).then(function (res) {
-                    if (res.status !== 204)
-                        load.style.display = "none";
-                    r.style.display = "none";
+                    if (res.status === 204)
+                        window.location = "/Web_QuanLyPhongMach/customers/appointments";
+                    else
+                        alert("Something Wrong!!");
                 }).catch(function (err) {
                     console.error(err);
-                    btn.style.display = "block";
-                    load.style.display = "none";
                 });
+                alert("Xoá lịch khám thành công.");
             }
         }
     });
@@ -113,9 +109,11 @@ function getAppointmentForNurse(endpoint) {
                         <td>${moment(data[i][1]).format("DD/MM/YYYY")}</td>
                         <td>${data[i][2]}</td>
                         <td>
-                            <input style="display: none" type="number" class="form-control" value="${data[i][0]}" name="idAppointment>
-                                <button type="submit" class="btn btn-primary" >Xác nhận</button>
+                            <input type="radio" id="html" name="idAppointment" value="${data[i][0]}">
+                            <label for="html">Chọn</label><br>
                         </td>
+                        <td>
+                        </td>  
                     </tr>
                     `;
             d.innerHTML = h;
