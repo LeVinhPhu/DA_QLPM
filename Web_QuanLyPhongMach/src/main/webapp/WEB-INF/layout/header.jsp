@@ -15,7 +15,7 @@
         <!-- Cấu Hình Logo -->
         <a class="navbar-brand mt-2 mt-lg-0" href="#">
             <img
-                src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1660815574/Web_QLPM/Logo5_cuvqlu.png"
+                src="https://res.cloudinary.com/vinhphuvtv2/image/upload/v1660815574/Web_QLPM/Logo/Logo5_cuvqlu.png"
                 height="40"
                 alt="MDB Logo"
                 loading="lazy"

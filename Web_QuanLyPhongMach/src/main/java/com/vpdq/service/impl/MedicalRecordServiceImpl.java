@@ -76,4 +76,9 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
     public boolean payment(int idM, int idNurse, Date date, Long total) {
         return this.medicalRecordRepository.payment(idM, idNurse, date, total);
     }
+
+    @Override
+    public List<Object[]> getMedicalRecordByIdCustomer() {
+        return this.medicalRecordRepository.getMedicalRecordByIdCustomer();
+    }
 }

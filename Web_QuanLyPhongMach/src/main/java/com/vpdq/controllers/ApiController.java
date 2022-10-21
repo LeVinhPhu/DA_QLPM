@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.vpdq.controllers;
+
 import com.vpdq.pojo.User;
 import com.vpdq.service.AppointmentService;
 import com.vpdq.service.MedicalRecordService;
@@ -43,7 +44,7 @@ public class ApiController {
 
     @Autowired
     private AppointmentService appointmentService;
-    
+
     @Autowired
     private MedicalRecordService medicalRecordService;
 
@@ -105,19 +106,18 @@ public class ApiController {
 //    public ResponseEntity<List<Customer>> listCustomer() {
 //        return new ResponseEntity<>(this.customerService.getCustomer(null, 0), HttpStatus.OK);
 //    }
-
     //DANH SÁCH PHIẾU ĐẶT
     @GetMapping("/appointment")
     public ResponseEntity<List<Object[]>> listAppointment(HttpSession session, Model model) {
         //nếu là bệnh nhân, lấy api theo ID bệnh nhân
-        
-        if (Search.getIdCus() != 0)
+
+        if (Search.getIdCus() != 0) {
             return new ResponseEntity<>(this.appointmentService.getAppointment(Search.getIdCus()), HttpStatus.OK);
-        
+        }
 
         User e = (User) session.getAttribute("currentUser");
 
-        if (e.getUserRole().equals("ROLE_DOCTOR")){
+        if (e.getUserRole().equals("ROLE_DOCTOR")) {
             return new ResponseEntity<>(this.appointmentService.getAppointment(-1), HttpStatus.OK);
         }  //nếu là y tá thì nạp phiếu có trạng thái chưa xác nhận
         if (e.getUserRole().equals("ROLE_NURSE")) {
@@ -153,11 +153,16 @@ public class ApiController {
     public ResponseEntity<List<Object[]>> listMedi() {
         return new ResponseEntity<>(this.medicalRecordService.getMedicalRecordForPayment(), HttpStatus.OK);
     }
-    
-    
+
     @GetMapping("/medical")
     public ResponseEntity<List<Object[]>> medical() {
-        return new ResponseEntity<>(this.medicalRecordService.getMedicalRecordForPaymentByID(43),HttpStatus.OK);
+        return new ResponseEntity<>(this.medicalRecordService.getMedicalRecordForPaymentByID(43), HttpStatus.OK);
+    }
+
+    //MedicalRecord-------------------
+    @GetMapping("/medicalRecordByIdCustomer")
+    public ResponseEntity<List<Object[]>> medicalRecordByIdCustomer() {
+        return new ResponseEntity<>(this.medicalRecordService.getMedicalRecordByIdCustomer(), HttpStatus.OK);
     }
 
 }

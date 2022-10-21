@@ -101,8 +101,7 @@ function getAppointmentForDoctor(endpoint) {
 
 function getAppointmentForNurse(endpoint) {
     fetch(endpoint).then(function (res) {
-        return  res.json();
-    }).then(function (data) {
+        return  res.json();    }).then(function (data) {
         let d = document.getElementById("myAppointmentForNurse");
         if (d !== null) {
             let h = "";
@@ -114,7 +113,7 @@ function getAppointmentForNurse(endpoint) {
                         <td>${moment(data[i][1]).format("DD/MM/YYYY")}</td>
                         <td>${data[i][2]}</td>
                         <td>
-                            <input style="display: none" type="number" class="form-control" value="${data[i][0]}" name="idAppointment">
+                            <input style="display: none" type="number" class="form-control" value="${data[i][0]}" name="idAppointment>
                                 <button type="submit" class="btn btn-primary" >Xác nhận</button>
                         </td>
                     </tr>

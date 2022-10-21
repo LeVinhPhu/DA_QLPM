@@ -294,4 +294,27 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
         return false;
     }
 
+    @Override
+    public List<Object[]> getMedicalRecordByIdCustomer() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> q = b.createQuery(Object[].class);   
+        Root<User> aRoot = q.from(User.class);
+        Root<User> cRoot = q.from(User.class);
+        Root<MedicalRecord> mRRoot = q.from(MedicalRecord.class);
+
+        
+        q.where(b.equal(mRRoot.get("doctorId"), aRoot.get("id")),
+                b.equal(mRRoot.get("customerId"), cRoot.get("id")));
+        q.multiselect(
+                aRoot.get("firstName"),
+                aRoot.get("lastName"),
+                mRRoot.get("symptom"),
+                mRRoot.get("conclusion"));
+
+        Query<Object[]> query = session.createQuery(q);
+
+        return query.getResultList();
+    }
+
 }

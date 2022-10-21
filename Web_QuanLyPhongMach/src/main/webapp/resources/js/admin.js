@@ -123,8 +123,10 @@ btSubmit.addEventListener('click', function () {
     Array.from(inputEls).map((ele) =>
         ele.classList.remove('error'));
 
+    //nếu còn lỗi --> không load lại trang
     let flag = checkValidate();
-    if (!flag) {
+    if (!flag)
+    {
         $(document).ready(function () {
             $('#myFormAdd').submit(function (e) {
                 e.preventDefault();
@@ -132,6 +134,7 @@ btSubmit.addEventListener('click', function () {
         });
         temp++;
     }
+
     if (flag && temp >= 1)
     {
         var formData = new FormData($('#myFormAdd')[0]);
@@ -151,6 +154,7 @@ btSubmit.addEventListener('click', function () {
         alert('Gửi đăng ký thành công !');
         window.location = "/Web_QuanLyPhongMach/admins/adminsManager";
     }
+
     if (flag && temp <= 0)
     {
         alert('Gửi đăng ký thành công !!');
