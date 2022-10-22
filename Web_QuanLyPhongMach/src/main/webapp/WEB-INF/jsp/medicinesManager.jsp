@@ -11,7 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
-<div class="row  mb-4 mt-3" style="">
+<div class="row  mb-5 mt-3" style="">
     <div class="col-md-5 col-12">
         <div class="mt-3">
             <h2 style="font-family: fantasy;">P&Q CLINIC </h2>
@@ -118,7 +118,7 @@
 </div>   
 
 
-<h2 style="text-align: center; margin-top: 10px">QUẢN LÝ THUỐC</h2>
+<h2 style="text-align: center; margin-top: 10px; font-family:initial">QUẢN LÝ THUỐC</h2>
 
 <!-- THÊM THUỐC -->
 <div class="modal" id="myModal">
@@ -213,24 +213,25 @@
 
 <!--DANH SÁCH THUỐC-->
 <div class="row mt-3 mb-3">
-    <div class="col-md-12 col-12 shadow" style="overflow: auto; height: 500px; border-radius: 10px">
-
-        <table class="table table-hover">
-            <tr class="table-success">
-                <th>
-                    <i onclick="load()" class="fas fa-redo-alt"></i>
-                </th>
-                <th>Tên thuốc</th>
-                <th>Số lượng</th>
-                <th>Đơn giá (VNĐ)</th>
-                <th>Đơn vị</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tbody id="myMedicine">
-            </tbody>
-        </table>
+    <div class="col-md-12 col-12">
+        <div class="col-md-12 col-12" style="overflow: auto; height: 500px; border-radius: 10px">
+            <table class="table table-hover">
+                <tr class="table-success">
+                    <th>
+                        <i onclick="load()" class="fas fa-redo-alt"></i>
+                    </th>
+                    <th>Tên thuốc</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá (VNĐ)</th>
+                    <th>Đơn vị</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tbody id="myMedicine">
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -264,9 +265,9 @@
 <script src="<c:url value="/js/medicine.js" />"></script>
 <script>
     <c:url value="/api/medicines" var="m" />
-                        window.onload = function () {
-                            getMedicines('${m}');
-                        };
+                            window.onload = function () {
+                                getMedicines('${m}');
+                            };
 </script>
 
 

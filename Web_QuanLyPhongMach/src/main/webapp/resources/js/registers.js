@@ -26,13 +26,13 @@ btnSubmit.addEventListener('click', function () {
     //nếu còn lỗi --> không load lại trang
     if (!checkValidate()) {
         $(document).ready(function () {
-            $('form').submit(function (event) {
+            $('form').submit(function (e) {
                 $.ajax({
                     method: $(this).attr('method'),
                     url: $(this).attr('action'),
                     data: $(this).serialize()
                 });
-                event.preventDefault();
+                e.preventDefault();
             });
         });
     } else {
@@ -45,8 +45,10 @@ btnSubmit.addEventListener('click', function () {
                     check = false;
                     setError(username, 'Tài khoản đã tồn tại');
                 }
-            if (check)
+            if (check) {
                 window.location = "/Web_QuanLyPhongMach/login";
+            }
+
         });
     }
 });

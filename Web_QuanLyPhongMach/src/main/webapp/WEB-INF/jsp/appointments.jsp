@@ -64,7 +64,7 @@
 </div>   
 
 
-<h2 style="text-align: center; margin-top: 10px">DANH SÁCH ĐĂNG KÝ KHÁM BỆNH</h2>
+<h2 style="text-align: center; margin-top: 10px; font-family:initial">DANH SÁCH ĐĂNG KÝ KHÁM BỆNH</h2>
 
 <div data-bs-toggle="modal" data-bs-target="#myModal" style="margin: 8px; width: 20%;"><i class="fas fa-plus"></i>  Đặt lịch</div>
 

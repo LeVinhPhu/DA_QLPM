@@ -62,42 +62,46 @@
     </div>
 </div>   
 
+<div class="row d-flex justify-content-center mb-3">
 
-<h2 style="text-align: center; margin-top: 10px">PHIẾU KHÁM BỆNH</h2>
+    <div class="col-md-9 col-12 mt-3 mb-4">
+        <h2 class="mb-3" style="text-align: center">PHIẾU KHÁM BỆNH</h2>
 
 
-<c:url value="/employees/medicalRecord/${cusID}" var="action" />
-<form:form id="myForm" method="post" action="${action}" modelAttribute="medicalRecord" enctype="multipart/form-data">
+        <c:url value="/employees/medicalRecord/${cusID}" var="action" />
+        <form:form id="myForm" method="post" action="${action}" modelAttribute="medicalRecord" enctype="multipart/form-data">
 
-    <div class="form-floating input-row">
-        <form:select path="medicalServiceId" class="form-select" id="medicalServiceId" name="medicalServiceId">
-            <c:forEach items="${services}" var="s">
-                <option value="${s.id}">${s.name}</option>
-            </c:forEach>
-        </form:select>
-        <label for="serviceId" class="form-label">Loại dịch vụ</label>
+            <div class="form-floating input-row">
+                <form:select path="medicalServiceId" class="form-select" id="medicalServiceId" name="medicalServiceId">
+                    <c:forEach items="${services}" var="s">
+                        <option value="${s.id}">${s.name}</option>
+                    </c:forEach>
+                </form:select>
+                <label for="serviceId" class="form-label">Loại dịch vụ:</label>
+            </div>
+
+            <div class="form-floating input-row">
+                <form:input type="text" path="symptom" class="form-control" id="symptom" placeholder="Nhap trieu chung" name="name" />
+                <label for="name">Triệu chứng:</label>
+                <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
+                <small></small>
+            </div>
+
+            <div class="form-floating input-row">
+                <form:input type="text" path="conclusion" class="form-control" id="conclusion" placeholder="Nhap ket luan benh" name="conclusion" />
+                <label for="conclusion">Kết luận:</label>
+                <%--<form:errors path="unitPrice" element="div" cssClass="alert alert-danger" />--%>
+                <small></small>
+            </div>
+
+            <div class="form-floating input-row">
+                <form:input type="text" path="note" class="form-control" id="note" placeholder="Ghi chu" name="note" />
+                <label for="note">Ghi chú:</label>
+            </div>
+            <div class="form-floating mt-2" style="text-align: right">
+                <input type="submit" id="btnAdd" value="Lập phiếu khám" class="btn btn btn-warning"/>
+            </div>
+
+        </form:form>
     </div>
-
-    <div class="form-floating input-row">
-        <form:input type="text" path="symptom" class="form-control" id="symptom" placeholder="Nhap trieu chung" name="name" />
-        <label for="name">Triệu chứng</label>
-        <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
-        <small></small>
-    </div>
-
-    <div class="form-floating input-row">
-        <form:input type="text" path="conclusion" class="form-control" id="conclusion" placeholder="Nhap ket luan benh" name="conclusion" />
-        <label for="conclusion">Kết luận</label>
-        <%--<form:errors path="unitPrice" element="div" cssClass="alert alert-danger" />--%>
-        <small></small>
-    </div>
-
-    <div class="form-floating input-row">
-        <form:input type="text" path="note" class="form-control" id="note" placeholder="Ghi chu" name="note" />
-        <label for="note">Ghi chú</label>
-    </div>
-        <div class="form-floating mb-3 mt-2" style="text-align: right">
-        <input type="submit" id="btnAdd" value="Lập phiếu" class="btn btn btn-primary"/>
-    </div>
-
-</form:form>  
+</div>

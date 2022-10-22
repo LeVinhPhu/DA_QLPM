@@ -63,7 +63,7 @@
 </div>   
 
 
-<h2 style="text-align: center; margin-top: 10px">DANH SÁCH PHIẾU ĐẶT CỦA KHÁCH HÀNG</h2>        
+<h2 style="text-align: center; margin-top: 10px; font-family:initial">DANH SÁCH PHIẾU ĐẶT CỦA KHÁCH HÀNG</h2>        
 
 <!--DANH SÁCH PHIẾU ĐẶT CỦA KHÁCH HÀNG-->
 <div class=""> 
@@ -71,7 +71,7 @@
         <c:url value="/employees/appointmentsManager" var="action" />
         <form method="post" action="${action}">
             <table class="table table-hover ">
-                <tr>
+                <tr class="">
                     <th>Mã phiếu đặt</th>
                     <th>Tên khách hàng</th>
                     <th>Số điện thoại</th>

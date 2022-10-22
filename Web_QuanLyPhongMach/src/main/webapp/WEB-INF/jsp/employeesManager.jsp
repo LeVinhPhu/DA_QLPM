@@ -11,7 +11,7 @@
 
 
 
-<div class="row  mb-4 mt-3" style="">
+<div class="row  mb-5 mt-3" style="">
     <div class="col-md-5 col-12">
         <div class="mt-3">
             <h2 style="font-family: fantasy;">P&Q CLINIC </h2>
@@ -118,7 +118,7 @@
 </div>   
 
 
-<h2 style="text-align: center; margin-top: 10px">QUẢN LÝ NHÂN VIÊN</h2>
+<h2 style="text-align: center; margin-top: 10px; font-family:initial">QUẢN LÝ NHÂN VIÊN</h2>
 
 <div class="row mt-4 mb-4">
     <div class="col-md-9 col-12">
@@ -134,29 +134,31 @@
 </div>
 
 <div class="row mt-2 mb-2 ">
-    <div class="col-md-12 sol-12 shadow" style="overflow: auto; height: 500px; border-radius: 10px">
-        <div class = "col-md-12 col-12">
+    <div class="col-md-12 col-12">
+        <div class="col-md-12 sol-12" style="overflow: auto; height: 500px; border-radius: 10px">
+            <div class = "col-md-12 col-12">
 
-            <table class="table table-hover">
-                <tr class="table-info">
-                    <th><i onclick="load()" class="fas fa-redo-alt"></i></th>
-                    <th>Họ</th>
-                    <th>Tên</th>
-                    <th>Ngày sinh</th>
-                    <th>Giới tính</th>
-                    <th>Chức vụ</th>
-                    <th>SĐT</th>
-                    <th>Địa chỉ</th>
-                    <th></th>
-                    <th></th>
-                    <th></th> 
-                    <th></th> 
-                </tr>
-                <tbody id="myEmployee">
-                    <tr>
+                <table class="table table-hover">
+                    <tr class="table-success">
+                        <th><i onclick="load()" class="fas fa-redo-alt"></i></th>
+                        <th>Họ</th>
+                        <th>Tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Giới tính</th>
+                        <th>Chức vụ</th>
+                        <th>SĐT</th>
+                        <th>Địa chỉ</th>
+                        <th></th>
+                        <th></th>
+                        <th></th> 
+                        <th></th> 
                     </tr>
-                </tbody>
-            </table>
+                    <tbody id="myEmployee">
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -329,9 +331,9 @@
 <script src="<c:url value="/js/employee.js" />"></script>
 <script>
     <c:url value="/api/employeesManager" var="u" />
-                        window.onload = function () {
-                            getEmployees("${u}");
-                        };
+                            window.onload = function () {
+                                getEmployees("${u}");
+                            };
 </script>
 
 

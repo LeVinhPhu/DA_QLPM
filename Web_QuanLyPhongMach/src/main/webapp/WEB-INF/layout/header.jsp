@@ -89,7 +89,7 @@
                         </c:if>
                     </li>
                     <li>
-                        <c:if test="${currentUser != null}">
+                        <c:if test="${currentUser.userRole.equals('ROLE_CUSTOMER')}">
                             <a id = "role" class="dropdown-item" href="/Web_QuanLyPhongMach/customers/customersProfile">Thông tin cá nhân</a>
                         </c:if>
                     </li>

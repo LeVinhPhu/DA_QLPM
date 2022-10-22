@@ -55,7 +55,7 @@
                         <option value="Khác">Khác</option>
                     </c:if>
                     <c:if test="${employeeUpdate.sex.equals('Khác')}">
-                        <option value="Nam" selected="selected">Nam</option>
+                        <option value="Nam">Nam</option>
                         <option value="Nữ">Nữ</option>
                         <option value="Khác" selected="selected">Khác</option>
                     </c:if>

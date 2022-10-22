@@ -11,7 +11,7 @@
 
 
 
-<div class="row  mb-4 mt-3" style="">
+<div class="row  mb-5 mt-3" style="">
     <div class="col-md-5 col-12">
         <div class="mt-3">
             <h2 style="font-family: fantasy;">P&Q CLINIC </h2>
@@ -118,15 +118,15 @@
 </div>   
 
 
-<h2 style="text-align: center; margin-top: 10px">QUẢN LÝ LỊCH TRỰC</h2>
+<h2 style="text-align: center; margin-top: 10px; font-family:initial">QUẢN LÝ LỊCH TRỰC</h2>
 
 
-<div class="row mt-4 mb-5">
-    <div class="col-md-4 col-12 shadow">
-        <div style="text-align: center;" ><h4>DANH SÁCH NHÂN VIÊN</h4></div>
+<div class="row mt-5 mb-5">
+    <div class="col-md-4 col-12">
+        <div style="text-align: center; font-family:initial" ><h4>DANH SÁCH NHÂN VIÊN</h4></div>
         <div class="col-md-12 col-12 mt-2" style="overflow: auto; height: 500px; border-radius: 10px">
             <table class="table table-hover ">
-                <tr class="table-primary">
+                <tr class="table-success">
                     <th>
                         <i onclick="load()" class="fas fa-redo-alt"></i>
                     </th>
@@ -140,8 +140,8 @@
         </div>
     </div>
 
-    <div class="col-md-8 col-12 shadow">
-        <div style="text-align: center;" ><h4>LỊCH PHÂN CÔNG</h4></div>
+    <div class="col-md-8 col-12">
+        <div style="text-align: center; font-family:initial" ><h4>LỊCH PHÂN CÔNG</h4></div>
         <div class="col-md-12 col-12 mt-2" style="overflow: auto; height: 500px; border-radius: 10px">   
             <table class="table table-hover">
                 <tr class="table-success">

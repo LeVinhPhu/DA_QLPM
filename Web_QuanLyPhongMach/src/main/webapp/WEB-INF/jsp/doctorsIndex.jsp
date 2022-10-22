@@ -20,7 +20,7 @@
         <div> 
             <div style="height: 250px; overflow: auto;border-radius: 10px">
                 <table class="table table-hover ">
-                    <tr class="table-primary">
+                    <tr class="table-success">
                         <th>Mã phiếu đặt</th>
                         <th>Tên khách hàng</th>
                         <th></th>

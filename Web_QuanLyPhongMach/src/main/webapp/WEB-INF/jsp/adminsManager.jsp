@@ -11,7 +11,7 @@
 
 
 
-<div class="row  mb-4 mt-3" style="">
+<div class="row  mb-5 mt-3" style="">
     <div class="col-md-5 col-12">
         <div class="mt-3">
             <h2 style="font-family: fantasy;">P&Q CLINIC </h2>
@@ -116,7 +116,7 @@
 </div>   
 
 
-<h2 style="text-align: center; margin-top: 10px">QUẢN LÝ ADMIN</h2>
+<h2 style="text-align: center; margin-top: 10px; font-family:initial">QUẢN LÝ ADMIN</h2>
 
 <div class="row mt-4 mb-4">
     <div class="col-md-9 col-12"><div data-bs-toggle="modal" data-bs-target="#myModal" style="margin: 8px; width: 20%"><i class="fas fa-plus"></i>  Thêm admin</div></div>
@@ -132,26 +132,28 @@
 
 <!--DANH SÁCH ADMIN-->
 <div class="row mt-3 mb-3">
-    <div class="col-md-12 col-12 shadow" style="overflow: auto; height: 500px; border-radius: 10px">
-        <table class="table table-hover ">
-            <tr class="table-primary">
-                <th>
-                    <i onclick="load()" class="fas fa-redo-alt"></i>
-                </th>
-                <th>Họ và tên đệm</th>
-                <th>Tên</th>
-                <th>Ngày sinh</th>
-                <th>Giới tính</th>
-                <th>Số điện thoại</th>
-                <th>Vai trò</th>
-                <th></th>
-                <th></th>
-                <th></th> 
-                <th></th> 
-            </tr>
-            <tbody id="myAdmin">
-            </tbody>
-        </table>
+    <div class="col-md-12 col-12">
+        <div class="col-md-12 col-12" style="overflow: auto; height: 500px; border-radius: 10px">
+            <table class="table table-hover ">
+                <tr class="table-success">
+                    <th>
+                        <i onclick="load()" class="fas fa-redo-alt"></i>
+                    </th>
+                    <th>Họ và tên đệm</th>
+                    <th>Tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                    <th>Số điện thoại</th>
+                    <th>Vai trò</th>
+                    <th></th>
+                    <th></th>
+                    <th></th> 
+                    <th></th> 
+                </tr>
+                <tbody id="myAdmin">
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -320,7 +322,7 @@
 
 <script src="<c:url value="/js/admin.js" />"></script>
 <script> <c:url value="/api/adminsManager" var="u" />
-                        window.onload = function () {
-                            getAdmin("${u}");
-                        }
+                            window.onload = function () {
+                                getAdmin("${u}");
+                            }
 </script>

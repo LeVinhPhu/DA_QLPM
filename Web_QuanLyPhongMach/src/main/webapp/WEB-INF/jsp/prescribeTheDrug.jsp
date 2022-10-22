@@ -11,7 +11,7 @@
 
 
 
-<div class="row  mb-2 mt-3" style="">
+<div class="row  mb-2 mt-3">
     <div class="col-md-10 col-12">
         <div class="mt-3">
             <h2 style="font-family: fantasy;">P&Q CLINIC </h2>
@@ -50,7 +50,19 @@
     </div>
 </div>   
 
-<h2 style="text-align: center; margin-top: 10px">RA TOA THUỐC</h2>
+<div class="mt-3 mb-3" style="text-align: center; color: black; font-family:initial"><h5>THÔNG TIN PHIẾU KHÁM</h5></div>
+
+<div class="col-md-12 col-12 shadow-sm">
+    <hr>
+    <div class="mb-4">
+        <div class="mt-3 mb-3" style="padding-left: 10px">Mã phiếu khám: <b><i><c:out value="${info[0][0]}" /></i></b></div>
+        <div class="mt-3 mb-3" style="padding-left: 10px">Tên bệnh nhân: <b><i><c:out value="${info[0][1]}" /> <c:out value="${info[0][2]}" /></i></b></div>
+        <div class="mt-3 mb-3" style="padding-left: 10px">Triệu chứng bệnh: <b><i><c:out value="${info[0][3]}" /></i></b></div>
+        <div class="mt-3 mb-3" style="padding-left: 10px">Kết luận: <b><i><c:out value="${info[0][4]}" /></i></b></div>
+    </div>
+    <hr>
+</div>
+
 
 <!-- The Modal -->
 <div class="modal" id="myModal">
@@ -101,22 +113,12 @@
     </div>
 </div>
 
+<div class="mt-5" style="text-align: center; color: black; font-family:initial"><h4>TOA THUỐC</h4></div>
 
 <!--DANH SÁCH THUỐC TRONG PHIẾU KHÁM-->
-<div class="row mt-4 mb-4">
-    <div class="col-md-6 col-12 shadow">
-        <div class="mb-4" style="border: dashed 1px white">
-            <div class="mt-3 mb-3" style="text-align: center; color: black"><h5>HỒ SƠ BỆNH ÁN</h5></div>
-            <hr>
-            <div class="mt-3 mb-3" style="padding-left: 10px">Mã phiếu khám: <b><i><c:out value="${info[0][0]}" /></i></b></div>
-            <div class="mt-3 mb-3" style="padding-left: 10px">Tên bệnh nhân: <b><i><c:out value="${info[0][1]}" /> <c:out value="${info[0][2]}" /></i></b></div>
-            <div class="mt-3 mb-3" style="padding-left: 10px">Triệu chứng bệnh: <b><i><c:out value="${info[0][3]}" /></i></b></div>
-            <div class="mt-3 mb-3" style="padding-left: 10px">Kết luận: <b><i><c:out value="${info[0][4]}" /></i></b></div>
-        </div>
-        <hr>
-    </div>
-    <div class="col-md-6 col-12 shadow"  style="overflow: auto">
-        <div class="mt-3 mb-3" style="text-align: center; color: black"><h5>TOA THUỐC</h5></div>
+<div class="row mb-4 shadow-sm">
+    <hr>
+    <div class="col-md-8 col-12"  style="overflow: auto;">
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
             <i style="font-size: 20px; color: #0d6efd"class="far fa-plus-square"></i>
         </button>
@@ -125,8 +127,8 @@
         </div>
         <c:url value="/employees/prescription" var="action" />
         <form method="post" action="${action}">
-            <table class="table table-hover shadow">
-                <tr class="table-primary">
+            <table class="table table-hover shadow-sm">
+                <tr class="table-success">
                     <th>Tên thuốc</th>
                     <th>Số lượng</th>
                     <th>Đơn vị </th>
@@ -139,30 +141,22 @@
             </table>
         </form>
     </div>
-</div>
 
-<div class="row mb-1">
-    <div class="col-md-8 col-12"">
-
-    </div>
-    <div class="col-md-4 col-12"">
-        <c:url value="/employees/prescription/${medicalRecordID}" var="action" />
-        <form action="${action}" class="d-flex">
-            <input class="form-control me-2" type="text" name="kw" placeholder="Nhập tên thuốc...">
-            <button type="submit" class="btn"><i class="fas fa-search"></i></button>
-        </form>
-    </div>
-</div>
-<div class="row mb-5 shadow">
-    <div class="col-md-12 col-12" style="font-size: 14px">
-        <div class="mt-2" style="height: 300px; overflow: auto">
+    <div class="col-md-4 col-12">
+        <div class="mb-3">
+            <c:url value="/employees/prescription/${medicalRecordID}" var="action" />
+            <form action="${action}" class="d-flex">
+                <input class="form-control me-2" type="text" name="kw" placeholder="Nhập tên thuốc để tìm kiếm...">
+                <button type="submit" class="btn border"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div class="mt-2" style="height: 500px; overflow: auto">
             <table class="table table-hover">
                 <tr class="table-success">
                     <th></th>
                     <th>Tên</th>
                     <th>Đơn vị </th>
                     <th>Đơn giá</th>
-                    <th>Ghi chú</th>
                 </tr>
                 <tbody>
                     <c:forEach items="${medicines}" var="m">
@@ -171,7 +165,6 @@
                             <td>${m[1]}</td>
                             <td>${m[2]}</td>
                             <td><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${m[3]}" /></td>
-                            <td>${m[4]}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -179,13 +172,12 @@
         </div>
     </div>
 </div>
-
 <script src="<c:url value="/js/prescribeTheDrug.js" />"></script>
 <script>
     <c:url value="/api/medicineInPre/${info[0][0]}" var="m" />
-                    window.onload = function () {
-                        getMedicineInPrescription('${m}');
-                    };
+    window.onload = function () {
+        getMedicineInPrescription('${m}');
+    };
 </script>
 
 

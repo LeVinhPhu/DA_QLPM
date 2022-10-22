@@ -94,6 +94,3 @@
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="<c:url value="/js/registers.js" />"></script>
-<script>
-    <c:url value="/api/phoneNumber" var="p" />;
-</script>

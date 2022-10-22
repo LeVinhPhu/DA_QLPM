@@ -7,79 +7,113 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
-<h3 class="mt-2 mb-2" style="text-align: center">${currentUser.firstName} ${currentUser.lastName}</h3>
-<div style="text-align: center">
-    <img src="${currentUser.image}" width='150' />
+<div class="mt-2 mb-3">
+    <div style="text-align: center">
+        <img src="${updateProfileCustomer.image}" width='150' />
+    </div>   
+    <h3 class="mt-2 mb-2" style="text-align: center">${updateProfileCustomer.firstName} ${updateProfileCustomer.lastName}</h3>
 </div>
+
 
 <form:errors path="**" element="div" style="color: red; font-size: 13px; margin-top: 2px" />
 
 <c:url value="/customers/customersProfile" var="action" />
-<form:form id="updateProfileCustomer" method="post" action="${action}" modelAttribute="updateProfileCustomer" enctype="multipart/form-data">
+<form:form id="formUpdateCustomer" method="post" action="${action}" modelAttribute="updateProfileCustomer" enctype="multipart/form-data">
+    <div class="form-floating input-row">
+        <form:input type="text" path="firstName" class="form-control" id="firstName" placeholder="Nhap ho ten dem" name="firstName" />
+        <label for="firstName">Họ và tên đệm:</label>
+        <small></small>
+    </div>
 
-    <div style="width: 50%; margin-left: 25%">
-        <div class="form-floating input-row">
-            <form:input type="text" path="firstName" class="form-control" id="firstName" placeholder="Nhap ten" name="firstName" />
-            <label for="firstName">Họ và tên đệm <span style="color: red">*</span></label>
-            <%--<form:errors path="name" element="div" style="color: red; font-size: 13px; margin-top: 2px" />--%>
-            <small></small>
+    <div class="form-floating input-row">
+        <form:input type="text" path="lastName" class="form-control" id="lastName" placeholder="Nhap ten" name="lastName" />
+        <label for="lastName">Tên:</label>
+        <small></small>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="input-row form-floating">
+                <form:input type="date" class="form-control" path="dateOfBirth" id="dateOfBirth"/>
+                <label for="dateOfBirth">Ngày Sinh:</label>
+                <!--Sinh lổi-->
+                <small></small>
+            </div> 
         </div>
 
-        <div class="form-floating input-row">
-            <form:input type="text" path="lastName" class="form-control" id="lastName" placeholder="Nhap ten" name="lastName" />
-            <label for="lastName">Tên <span style="color: red">*</span></label>
-            <small></small>
+        <div class="col-md-4">
+            <div class="input-row form-floating">
+                <form:select path="sex" class="form-select" id="sex" name="sex">
+                    <c:if test="${updateProfileCustomer.sex.equals('Nam')}">
+                        <option value="Nam" selected="selected">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </c:if>
+                    <c:if test="${updateProfileCustomer.sex.equals('Nữ')}">
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ" selected="selected">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </c:if>
+                    <c:if test="${updateProfileCustomer.sex.equals('Khác')}">
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác" selected="selected">Khác</option>
+                    </c:if>
+                </form:select>
+                <label for="sex" class="form-label">Giới Tính:</label>
+                <!--Sinh lổi-->
+                <small></small>
+            </div>
         </div>
+    </div>            
 
-        <div class="form-floating input-row">
-            <form:select path="sex" class="form-select" id="sex" name="sex">
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-                <option value="Khác">Khác</option>
-            </form:select>
-            <label for="sex" class="form-label">Giới tính</label>
-        </div>
+    <div class="form-floating input-row">
+        <form:input type="text" path="email" class="form-control" id="email" placeholder="Nhap email" name="email" />
+        <label for="email">Email:</label>
+        <small></small>
+    </div>
 
-        <div class="input-row form-floating">
-            <form:input path="dateOfBirth" class="form-control" type="date" id="dateOfBirth" name="dateOfBirth" />
-            <label for="dateOfBirth">Ngày sinh</label>
-            <small>Error</small>
-        </div>    
+    <div class="form-floating input-row">
+        <form:input type="number" path="phone" class="form-control" id="phone" placeholder="Nhap phone" name="phone" />
+        <label for="phone">Số điện thoại:</label>
+        <small></small>
+    </div>
 
-        <div class="form-floating input-row">
-            <form:input type="text" path="address" class="form-control" id="address" placeholder="Nhap dia chi" name="name" />
-            <label for="name">Địa chỉ</label>
-        </div>
 
-        <div class="form-floating mt-3 input-row">
-            <form:input type="email" path="email" class="form-control" id="email" placeholder="Nhap email" name="name" />
-            <label for="name">Email</label>
-            <small>Error</small>
-        </div>
+    <div class="form-floating input-row">
+        <form:input type="text" path="address" class="form-control" id="address" placeholder="Nhap dia chi" name="address" />
+        <label for="address">Địa chỉ:</label>
+        <small></small>
+    </div>
 
-        <div class="form-floating input-row">
-            <form:input type="number" path="phoneNumber" class="form-control" id="phoneNumber" placeholder="Nhap SDT" name="phoneNumber" />
-            <label for="phone">Số điện thoại <span style="color: red">*</span></label>
-            <small>Error</small>
-        </div>
+    <div class="form-floating input-row" style="display: none">
+        <form:input type="hidden" path="username" class="form-control" id="username" placeholder="Nhap username" name="username" />
+        <label for="username">Tài khoản:</label>
+        <small></small>
+    </div>
+    <div class="input-row">
+        <label style="margin-left: 0;" class="ml-2"for="file">Chọn ảnh:</label>
+        <form:input type="file" path="file" name="file" id="file" class="form-control" />
+    </div>
 
-        <div>
-            <input id="btnUpdateProfile" type="submit" value="Cập nhật" class="btn btn-warning mb-3 mt-3" />
-        </div>    
+    <div class="form-floating input-row">
+        <form:input type="text" path="note" class="form-control" id="note" placeholder="Ghi chu" name="note" />
+        <label for="note">Ghi chú</label>
+    </div>
+
+    <div class="form-floating mt-2" style="text-align: right">
+        <input type="submit" id="btnUpdate" value="Lưu thông tin" class="btn mb-3 mt-3" style="background-color: #d1e7dd" />
     </div>
 </form:form>
 
-<script src="<c:url value="/js/customerProfile.js" />"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script> 
+
+<script src="<c:url value="/js/customersProfile.js" />"></script>
 <script>
-    document.getElementById('firstName').value = "${currentUser.firstName}";
-    document.getElementById('lastName').value = "${currentUser.lastName}";
-    document.getElementById('dateOfBirth').value = "${currentUser.dateOfBirth}";
-    document.getElementById('email').value = "${currentUser.email}";
-    document.getElementById('phoneNumber').value = "${currentUser.phoneNumber}";
-    document.getElementById('password').value = "${currentUser.password}";
-    document.getElementById('confirmPassword').value = "${currentUser.password}";
-    document.getElementById('address').value = "${currentUser.address}";
+    _today: function () {
+        document.getElementById("dateOfBirth").value = ${adminUpdate.dateOfBirth}.format("MM/DD/YYYY");
+    }
 </script>

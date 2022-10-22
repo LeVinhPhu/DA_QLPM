@@ -62,32 +62,30 @@
     </div>
 </div>   
 
-
-<h2 style="text-align: center; margin-top: 10px">DANH SÁCH BỆNH NHÂN CẦN KÊ TOA THUỐC</h2>
-
-<!--DANH SÁCH PHIẾU KHÁM BỆNH-->
-<div class="row"> 
-    <div class="col-md-12 col-12" style="overflow: auto; height: 500px; border-radius: 10px">
-        <c:url value="/employees/prescription" var="action" />
-        <form method="post" action="${action}">
-            <table class="table table-hover">
-                <tr class="table-primary">
-                    <th>Mã phiếu khám</th>
-                    <th>Tên khách hàng</th>
-                    <th></th>
-                </tr>
-                <tbody id="myMedicalRecord">
-                    <c:forEach items="${medicalRecord2}" var="d">
-                        <tr>
-                            <td>${d[0]}</td>
-                            <td>${d[1]} ${d[2]}</td>
-                            <td style="text-align: right"><a class="btn btn-primary" href="/Web_QuanLyPhongMach/employees/prescription/${d[0]}">Kê toa</a></td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-        </form>
+<div class="row d-flex justify-content-center mt-5 mb-4"> 
+    <div class="col-md-10 col-12">
+        <h2 class="mb-5" style="text-align: center; font-family:initial">DANH SÁCH BỆNH NHÂN CẦN KÊ TOA THUỐC</h2>
+        <!--DANH SÁCH PHIẾU KHÁM BỆNH-->
+        <div class="col-md-12 col-12" style="overflow: auto; height: 500px; border-radius: 10px">
+            <c:url value="/employees/prescription" var="action" />
+            <form method="post" action="${action}">
+                <table class="table table-hover">
+                    <tr class="table-success">
+                        <th>Mã phiếu khám</th>
+                        <th>Tên khách hàng</th>
+                        <th></th>
+                    </tr>
+                    <tbody id="myMedicalRecord">
+                        <c:forEach items="${medicalRecord2}" var="d">
+                            <tr>
+                                <td>${d[0]}</td>
+                                <td>${d[1]} ${d[2]}</td>
+                                <td style="text-align: right"><a class="btn btn-primary" href="/Web_QuanLyPhongMach/employees/prescription/${d[0]}">Kê toa</a></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
-
-    <div class="col-md-6 col-12"></div>
 </div>

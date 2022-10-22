@@ -121,7 +121,7 @@
 <div class="row mb-5 mt-2">
     <div class="col-md-6 col-12"  style="text-align: center;">
         <div style="color: black; border: none" class="card bg-light">
-            <h2 style="text-align: center; margin-top: 10px">QUẢN LÝ THỐNG KÊ</h2>
+            <h3 style="text-align: center; margin-top: 10px; font-family:initial">QUẢN LÝ THỐNG KÊ</h3>
         </div>
     </div>
     <div class="col-md-2 col-12">

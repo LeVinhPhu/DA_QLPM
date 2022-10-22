@@ -9,7 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
-<div class="row  mb-4 mt-3" style="">
+<div class="row  mb-5 mt-3" style="">
     <div class="col-md-5 col-12">
         <div class="mt-3">
             <h2 style="font-family: fantasy;">P&Q CLINIC </h2>
@@ -116,4 +116,4 @@
 </div>   
 
 
-<h2 style="text-align: center; margin-top: 10px">QUẢN LÝ KHÁCH HÀNG</h2>
+<h2 style="text-align: center; margin-top: 10px; font-family:initial">QUẢN LÝ KHÁCH HÀNG</h2>

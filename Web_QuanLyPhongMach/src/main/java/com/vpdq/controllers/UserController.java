@@ -23,7 +23,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @GetMapping("/login")
     public String login(Model model) {
         return "login";
@@ -39,9 +38,9 @@ public class UserController {
     public String registers(Model model,
             @ModelAttribute(value = "customers") User customer) {
         String errMsg = "";
-        customer.setUserRole("ROLE_CUSTOMER");
-        customer.setPosition("Khách hàng");
         if (customer.getPassword().equals(customer.getConfirmPassword())) {
+            customer.setUserRole("ROLE_CUSTOMER");
+            customer.setPosition("Khách hàng");
             if (this.userService.addUser(customer) == true) {
                 return "redirect:/login";
             } else {
