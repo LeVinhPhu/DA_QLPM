@@ -22,14 +22,12 @@
     <div class="form-floating input-row">
         <form:input type="text" path="firstName" class="form-control" id="firstName" placeholder="Nhap ho ten dem" name="firstName" />
         <label for="firstName">Họ và tên đệm:</label>
-        <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
         <small></small>
     </div>
 
     <div class="form-floating input-row">
         <form:input type="text" path="lastName" class="form-control" id="lastName" placeholder="Nhap ten" name="lastName" />
         <label for="lastName">Tên:</label>
-        <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
         <small></small>
     </div>
 
@@ -79,7 +77,6 @@
     <div class="form-floating input-row">
         <form:input type="number" path="phone" class="form-control" id="phone" placeholder="Nhap phone" name="phone" />
         <label for="phone">Số điện thoại:</label>
-        <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
         <small></small>
     </div>
 
@@ -88,7 +85,6 @@
             <div class="form-floating input-row">
                 <form:input type="text" path="specialize" class="form-control" id="specialize" placeholder="Nhap chuyen khoa" name="specialize" />
                 <label for="specialize">Chuyên khoa:</label>
-                <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                 <small></small>
             </div>
         </div>
@@ -115,14 +111,12 @@
     <div class="form-floating input-row">
         <form:input type="text" path="address" class="form-control" id="address" placeholder="Nhap dia chi" name="address" />
         <label for="address">Địa chỉ:</label>
-        <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
         <small></small>
     </div>
 
     <div class="form-floating input-row">
         <form:input type="text" path="username" class="form-control" id="username" placeholder="Nhap username" name="username" />
         <label for="username">Tài khoản:</label>
-        <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
         <small></small>
     </div>
     <div class="input-row">

@@ -99,7 +99,7 @@ function detailEmployee(endpoint, id) {
                     <h6>Username: ${data[i].username}</h6>
                     <h6>Password: ${data[i].password}</h6>
                 </div>
-            `
+            `;
             }
         let d = document.getElementById("detailEmployee");
         d.innerHTML = h;
@@ -159,12 +159,6 @@ btSubmit.addEventListener('click', function () {
         window.location = "/Web_QuanLyPhongMach/admins/employeesManager";
     }
 });
-
-//form Update
-function loadFormUpdate(endpoint,id){
-    
-}
-
 
 
 

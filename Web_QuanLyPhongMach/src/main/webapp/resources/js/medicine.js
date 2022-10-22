@@ -52,7 +52,7 @@ function getMedicines(endpoint) {
                         <td>${i + 1}</td>
                         <td>${data[i][1]}</td>
                         <td>${data[i][2]}</td>
-                        <td>${data[i][3]}</td>
+                        <td>${data[i][3].toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}</td>
                         <td>${data[i][4]}</td>
                         <td>
                             <i class="fas fa-info-circle" data-bs-toggle="modal" onclick="detailMedicines('${endpoint}', ${data[i][0]})"></i>

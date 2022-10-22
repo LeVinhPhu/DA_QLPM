@@ -33,11 +33,4 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
         Query q = s.createQuery("From Department");
         return q.getResultList();
     }
-
-    private class sessionFactory {
-
-        public sessionFactory() {
-        }
-    }
-
 }

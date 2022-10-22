@@ -85,7 +85,7 @@ public class EmployeeController {
         return "medicalRecord";
     }
 
-//    Tạo phiếu khám
+    // Tạo phiếu khám
     @PostMapping("/medicalRecord/{cusID}")
     public String addMedicalRecord(Model model, HttpSession session,
             @PathVariable(value = "cusID") int cusID,
@@ -177,7 +177,6 @@ public class EmployeeController {
                     model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(kw));
                 }
                 return "prescribeTheDrug";
-
             }
         }
 
@@ -213,7 +212,6 @@ public class EmployeeController {
         model.addAttribute("medicalRecordID", medicalRecordID);
         java.util.Date date = new java.util.Date();
         User e = (User) session.getAttribute("currentUser");
-//        Long total = 0L;
         if (this.medicalRecordService.payment(medicalRecordID, e.getId(), date, totals))
         {
             model.addAttribute("medicalRecordForNurse", this.medicalRecordService.getMedicalRecordForPayment());
@@ -245,32 +243,5 @@ public class EmployeeController {
             return "nursesIndex";
         }
         return "appointmentsManager";
-
     }
-
-    //Trang Ca nhan Admin
-    @GetMapping("/employeesProfile")
-    public String employeeProfile(Model model, HttpSession session) {
-        model.addAttribute("currentUser", session.getAttribute("currentUser"));
-        model.addAttribute("updateProfileEmployee", new User());
-        return "employeesProfile";
-    }
-
-    @PostMapping("/employeesProfile")
-    public String updateProfileEmployee(HttpSession session,
-            @ModelAttribute(value = "updateProfileEmployee") @Valid User e,
-            BindingResult r) {
-        if (r.hasErrors())
-        {
-            return "employeesProfile";
-            //return lổi
-        }
-        User e2 = (User) session.getAttribute("currentUser");
-        if (this.userService.updateUser(e2.getId(), e) == true)
-        {
-            return "redirect:updateProfileEmployee"; //return về trang gì đó
-        }
-        return "updateProfileEmployee";
-    }
-
 }

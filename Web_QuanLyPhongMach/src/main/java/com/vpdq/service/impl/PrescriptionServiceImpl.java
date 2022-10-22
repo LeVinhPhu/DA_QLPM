@@ -35,4 +35,9 @@ public class PrescriptionServiceImpl implements PrescriptionService {
     public List<Object[]> getPreByMedicalRecordID(int id) {
         return this.prescriptionRepository.getPreByMedicalRecordID(id);
     }
+
+    @Override
+    public boolean deleteMedicineInPrescription(int id) {
+        return this.prescriptionRepository.deleteMedicineInPrescription(id);
+    }
 }

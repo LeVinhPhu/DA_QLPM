@@ -20,13 +20,7 @@ public class HomeController {
     public String home(Model model) {
         return "login";
     }
-//    
-//    @PostMapping("/")
-//    public String registers(Model model,
-//            @RequestParam(value = "role") String role){
-//        UserRole.setRole(role);
-//        return "login";
-//    }
+
 
     @GetMapping("/home")
     public String uѕerGuide(Model model) {

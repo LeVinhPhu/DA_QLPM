@@ -10,17 +10,13 @@ import com.vpdq.pojo.Prescription;
 import com.vpdq.pojo.Unit;
 import com.vpdq.pojo.User;
 import com.vpdq.repository.PrescriptionRepository;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -95,12 +91,29 @@ public class PrescriptionRepositoryImpl implements PrescriptionRepository {
                 pRoot.get("quantity"),
                 uRoot.get("name"),
                 medicineRoot.get("unitPrice"),
-                pRoot.get("note")
+                pRoot.get("note"),
+                pRoot.get("id")
                 );
 
         Query query = session.createQuery(q);
 
         return query.getResultList();
     }
+
+    
+    @Override
+    public boolean deleteMedicineInPrescription(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+
+        try {
+            Prescription p = session.get(Prescription.class, id);
+            session.delete(p);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
 
 }

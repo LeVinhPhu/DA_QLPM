@@ -228,7 +228,6 @@
                         <div class="form-floating input-row">
                             <form:input type="number" path="phone" class="form-control" id="phone" placeholder="Nhap phone" name="phone" />
                             <label for="phone">Số điện thoại:</label>
-                            <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                             <small></small>
                         </div>
 
@@ -237,7 +236,6 @@
                                 <div class="form-floating input-row">
                                     <form:input type="text" path="specialize" class="form-control" id="specialize" placeholder="Nhap chuyen khoa" name="specialize" />
                                     <label for="specialize">Chuyên khoa:</label>
-                                    <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                                     <small></small>
                                 </div>
                             </div>
@@ -258,14 +256,12 @@
                         <div class="form-floating input-row">
                             <form:input type="text" path="address" class="form-control" id="address" placeholder="Nhap dia chi" name="address" />
                             <label for="address">Địa chỉ:</label>
-                            <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                             <small></small>
                         </div>
 
                         <div class="form-floating input-row">
                             <form:input type="text" path="username" class="form-control" id="username" placeholder="Nhap username" name="username" />
                             <label for="username">Tài khoản:</label>
-                            <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                             <small></small>
                         </div>    
 
@@ -274,7 +270,6 @@
                                 <div class="form-floating input-row">
                                     <form:input type="password" path="password" class="form-control" id="password" placeholder="Nhap password" name="password" />
                                     <label for="password">Mật khẩu:</label>
-                                    <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                                     <small></small>
                                 </div>
                             </div>
@@ -283,7 +278,6 @@
                                 <div class="form-floating input-row">
                                     <form:input type="password" path="confirmPassword" class="form-control" id="confirmPassword" placeholder="Nhap lai password" name="confirmPassword" />
                                     <label for="confirmPassword">Nhập lại mật khẩu:</label>
-                                    <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                                     <small></small>
                                 </div>
                             </div>
@@ -337,7 +331,7 @@
     <c:url value="/api/employeesManager" var="u" />
                         window.onload = function () {
                             getEmployees("${u}");
-                        }
+                        };
 </script>
 
 

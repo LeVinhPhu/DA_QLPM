@@ -41,7 +41,7 @@ btnSubmit.addEventListener('click', function () {
         }).then(function (data) {
             let check = true;
             for (let i = 0; i < data.length; i++)
-                if (data[i] == username.value) {
+                if (data[i] === username.value) {
                     check = false;
                     setError(username, 'Tài khoản đã tồn tại');
                 }

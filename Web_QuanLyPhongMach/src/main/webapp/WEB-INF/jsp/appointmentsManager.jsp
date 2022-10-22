@@ -74,23 +74,13 @@
                 <tr>
                     <th>Mã phiếu đặt</th>
                     <th>Tên khách hàng</th>
+                    <th>Số điện thoại</th>
                     <th>Ngày</th>
                     <th>Giờ</th>
                     <th>Chọn trước khi xác nhận</th>
                     <th><button type="submit" class="btn btn-primary" > Xác nhận và gửi mail <i class="fa fa-check-double"></i></button></td></th>
                 </tr>
                 <tbody id="myAppointmentForNurse">
-                    <%--<c:forEach items="${appointments}" var="a">--%>
-<!--                        <tr>
-                            <td>${a[0]}</td>
-                            <td>${a[5]} ${a[6]}</td>
-                            <td>${a[1]}</td>
-                            <td>${a[2]}</td>
-                            <td>${a[3]}</td>
-                            <td><input style="display: none" type="number" class="form-control" value="${a[0]}" name="idAppointment">
-                                <button type="submit" class="btn btn-primary" >Xác nhận</button></td>
-                        </tr>-->
-                    <%--</c:forEach>--%>
                 </tbody>
             </table>
         </form>

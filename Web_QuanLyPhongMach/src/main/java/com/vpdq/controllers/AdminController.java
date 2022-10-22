@@ -83,7 +83,6 @@ public class AdminController {
         model.addAttribute("department", this.departmentService.getDepartment());
         model.addAttribute("units", this.unitService.getUnits());
         model.addAttribute("suppliers", this.supplierService.getSuppliers());
-//        model.addAttribute("revenueStats", this.medicalRecordService.revenueStatistics());
     }
 
     @GetMapping("/adminIndex")
@@ -95,6 +94,7 @@ public class AdminController {
      *
      * @return
      */
+    
     //-----------ADMIN----------------------------------------------------------------------------------------------
     @GetMapping("/adminsManager")
     public String adminsMager(Model model,
@@ -176,40 +176,6 @@ public class AdminController {
         return "adminsManager";
     }
 
-    //Trang Ca nhan Admin
-    @GetMapping("/adminsProfile")
-    public String adminsProfile(Model model, HttpSession session) {
-        model.addAttribute("currentUser", session.getAttribute("currentUser"));
-        model.addAttribute("updateProfileAdmin", new User());
-        return "adminsProfile";
-    }
-
-    @PostMapping("/adminsProfile")
-    public String updateProfileAdmin(HttpSession session,
-            @ModelAttribute(value = "updateProfileAdmin") @Valid User adm,
-            BindingResult r) {
-//        if (adm.getFile().isEmpty() == false) {
-//            try {
-//                Map image = this.cloudinary.uploader().upload(adm.getFile().getBytes(),
-//                        ObjectUtils.asMap("resource_type", "auto"));
-//                String img = (String) image.get("secure_url");
-//                if (this.adminService.updateImageAdmin(a.getId(), img) == true) {
-//                    return "redirect:adminsProfile"; //return về trang gì đó
-//                }
-//            } catch (IOException ex) {
-//                System.err.println("ADD ADMIN " + ex.getMessage());
-//            }
-//        }
-        if (r.hasErrors()) {
-            return "adminsProfile";
-            //return lổi
-        }
-        User a = (User) session.getAttribute("currentUser");
-        if (this.userService.updateUser(a.getId(), adm) == true) {
-            return "redirect:adminsProfile"; //return về trang gì đó
-        }
-        return "adminsProfile";
-    }
 
     //------------EMPLOYEE----------------------------------------------------------------------------------
     @GetMapping("/employeesManager")
@@ -242,7 +208,7 @@ public class AdminController {
         }
 
         if (rs.hasErrors()) {
-            return "employeesManager"; //return lổi
+            return "employeesManager"; //return lỗi
         }
 
         if (empl.getUserRole().equals("ROLE_DOCTOR")) {
@@ -304,6 +270,7 @@ public class AdminController {
         return "customersManager";
     }
 
+    //Thống kê doanh thu
     @RequestMapping("/reportsManager")
     public String reportsManager(Model model,
             @RequestParam(value = "year", defaultValue = "2022", required = false) int year,
@@ -337,6 +304,7 @@ public class AdminController {
     }
 
     //------------REPORT------------------------------------------------------------------------------------------
+    //Thống kê số lượng bệnh nhân
     @RequestMapping("/reports2Manager")
     public String reports2Manager(Model model,
             @RequestParam(value = "year1", defaultValue = "2022", required = false) int year1,
@@ -369,14 +337,14 @@ public class AdminController {
         return "reports2Manager";
     }
 
+    //Thống kê tần suất sử dụng thuốc
     @RequestMapping("/reports3Manager")
     public String reports3Manager(Model model,
             @RequestParam(value = "year1", defaultValue = "2022", required = false) int year1,
             @RequestParam(value = "year2", defaultValue = "2022", required = false) int year2,
             @RequestParam(value = "year3", defaultValue = "2022", required = false) int year3,
             @RequestParam(value = "quarter2", defaultValue = "1", required = false) int quarter2,
-            @RequestParam(value = "month3", defaultValue = "1", required = false) int month3
-    ) {
+            @RequestParam(value = "month3", defaultValue = "1", required = false) int month3) {
         model.addAttribute("frequencyMedicineUsageStatsByYear", this.medicineService.frequencyOfMedicineUsageStatisticsByYear(year1));
         model.addAttribute("year1", year1);
 
@@ -426,7 +394,8 @@ public class AdminController {
         Search.setParam(params);
         return "medicinesManager";
     }
-
+    
+    //Thêm thuốc
     @PostMapping("/medicinesManager")
     public String addMedicine(@ModelAttribute(value = "medicineUP")
             @Valid Medicine m,
@@ -465,6 +434,7 @@ public class AdminController {
         return "updateMedicine";
     }
 
+    //Sửa thuốc
     @PostMapping("/medicinesManager/{mID}")
     public String updateMedicine(@PathVariable(value = "mID") int id,
             @ModelAttribute(value = "medicine1") @Valid Medicine m,
@@ -472,18 +442,19 @@ public class AdminController {
     ) {
         Medicine me = this.medicineService.getMedicineByID(id);
 
-//        if (m.getFile().isEmpty() == false) {
-//            try {
-//                Map r = this.cloudinary.uploader().upload(m.getFile().getBytes(),
-//                        ObjectUtils.asMap("resource_type", "auto"));
-//                String img = (String) r.get("secure_url");
-//                m.setImage(img);
-//            } catch (IOException ex) {
-//                System.err.println("ADD MEDICINE " + ex.getMessage());
-//            }
-//        } else {
-//            m.setImage(me.getImage());
-//        }
+        if (m.getFile().isEmpty() == false) {
+            try {
+                Map r = this.cloudinary.uploader().upload(m.getFile().getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                String img = (String) r.get("secure_url");
+                m.setImage(img);
+            } catch (IOException ex) {
+                System.err.println("UPDATE MEDICINE " + ex.getMessage());
+            }
+        } else {
+            m.setImage(me.getImage());
+        }
+        
         if (rs.hasErrors()) {
             return "updateMedicine";
         }

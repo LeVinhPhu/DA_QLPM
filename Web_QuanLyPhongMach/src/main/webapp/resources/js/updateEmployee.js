@@ -113,8 +113,8 @@ function checkValidate() {
     todayCheck.setDate(todayCheck.getDate() - 1);
     var dateOfBirthCheck = new Date(dateOfB);
 
-    if (dateOfB == "") {
-        setError(dateOfBirth, 'Ngày không hợp lệ!');
+    if (dateOfB === "") {
+        setError(dateOfBirth, 'Ngày không được để trống!');
         isCheck = false;
     }
     // Kiểm tra ngày sinh

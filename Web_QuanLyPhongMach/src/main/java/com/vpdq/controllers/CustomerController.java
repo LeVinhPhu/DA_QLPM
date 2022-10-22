@@ -4,19 +4,15 @@
  */
 package com.vpdq.controllers;
 
-import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
 import com.vpdq.pojo.Appointment;
 import com.vpdq.pojo.User;
 import com.vpdq.service.AppointmentService;
 import com.vpdq.service.UserService;
 import com.vpdq.utils.Search;
 import java.io.IOException;
-import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,7 +20,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -40,8 +35,6 @@ public class CustomerController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private Cloudinary cloudinary;
 
     @GetMapping("/customersIndex")
     public String index() {
@@ -76,10 +69,9 @@ public class CustomerController {
         a.setCustomerId(c);
         
         if (this.appointmentService.addAppointment(a)) {
-            return "appointments";
+            return "redirect:appointments";
         }
         return "redirect:appointments";
-//        return "appointments";
     }
 
     //

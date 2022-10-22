@@ -21,7 +21,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,7 +75,7 @@ public class ApiController {
         return new ResponseEntity<>(this.prescriptionService.getPrescription(), HttpStatus.OK);
     }
 
-//   API-Phu
+    
     @GetMapping("/employeesManager")
     public ResponseEntity<List<User>> list() {
         return new ResponseEntity<>(this.userService.getUserEmployee(null, 0), HttpStatus.OK);
@@ -99,14 +98,7 @@ public class ApiController {
         this.userService.deleteUser(adminId);
     }
 
-//    @GetMapping("/medicine/{mID}")
-//    public Medicine getMedicine(@PathVariable(value = "mID") int id) {
-//        return medicineService.getMedicineByID(id);
-//    }
-//    @GetMapping("/customersManager")
-//    public ResponseEntity<List<Customer>> listCustomer() {
-//        return new ResponseEntity<>(this.customerService.getCustomer(null, 0), HttpStatus.OK);
-//    }
+
     //DANH SÁCH PHIẾU ĐẶT
     @GetMapping("/appointment")
     public ResponseEntity<List<Object[]>> listAppointment(HttpSession session, Model model) {
@@ -165,5 +157,21 @@ public class ApiController {
     public ResponseEntity<List<Object[]>> medicalRecordByIdCustomer() {
         return new ResponseEntity<>(this.medicalRecordService.getMedicalRecordByIdCustomer(), HttpStatus.OK);
     }
+    
+    
+    //xem thuốc trong toa thuốc
+    @GetMapping("/medicineInPre/{medicalRecordID}")
+    public ResponseEntity<List<Object[]>> medicineInPre(@PathVariable(value = "medicalRecordID") int medicalRecordID) {
+        return new ResponseEntity<>(this.prescriptionService.getPreByMedicalRecordID(medicalRecordID), HttpStatus.OK);
+    }
+    
+    
+    //xoá thuốc trong khi kê toa
+    @DeleteMapping("/medicineInPre/{medicalRecordID}/{preID}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteMedicineInPre(@PathVariable(value = "preID") int preID) {
+        this.prescriptionService.deleteMedicineInPrescription(preID);
+    }
+
 
 }

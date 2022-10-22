@@ -224,7 +224,7 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <fmt:formatNumber type="number" value="${patientStats[0]}" maxFractionDigits="3" />
+                            <fmt:formatNumber type="number" value="${patientStats[0]}" maxFractionDigits="3" /> bệnh nhân
                         </div>
                     </div>
                 </div>
@@ -409,6 +409,6 @@
         patientStatsByYear(labels, data);
         patientStatsByQuarter(labels2, data2);
         patientStatsByMonth(labels3, data3);
-    }
+    };
 </script>
 

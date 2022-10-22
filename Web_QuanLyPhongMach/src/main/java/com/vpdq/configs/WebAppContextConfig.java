@@ -28,8 +28,6 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 
 /**
  *
@@ -81,7 +79,6 @@ public class WebAppContextConfig implements WebMvcConfigurer {
         r.addFormatter(new UnitFormatter());
         r.addFormatter(new SupplierFormatter());
         r.addFormatter(new StatusFormatter());
-//        r.addFormatter(new MedicalRecordFormatter());
         r.addFormatter(new UserFormatter());
         r.addFormatter(new DepartmentFormatter());
         r.addFormatter(new ServiceFormatter());

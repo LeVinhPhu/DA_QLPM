@@ -41,18 +41,9 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
         CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
 
         Root mRoot = q.from(MedicalRecord.class);
-        Root pRoot = q.from(Prescription.class);
-        Root medicineRoot = q.from(Medicine.class);
-        Root sRoot = q.from(MedicalService.class);
-
-        q.where(b.equal(pRoot.get("medicalRecordId"), mRoot.get("id")),
-                b.equal(pRoot.get("medicineId"), medicineRoot.get("id")),
-                b.equal(pRoot.get("medicineId"), medicineRoot.get("id")),
-                b.equal(mRoot.get("medicalServiceId"), sRoot.get("id")),
-                b.isNotNull(mRoot.get("billingDate")));
 
         q.multiselect(b.function("YEAR", Integer.class, mRoot.get("billingDate")), 
-                b.sum(b.sum(b.prod(pRoot.get("quantity"), medicineRoot.get("unitPrice"))), sRoot.get("price")));
+                b.sum(mRoot.get("total")));
         
         q.groupBy(b.function("YEAR", Integer.class, mRoot.get("billingDate")));
         q.orderBy(b.asc(b.function("YEAR", Integer.class, mRoot.get("billingDate"))));
@@ -68,19 +59,13 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
         CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
 
         Root mRoot = q.from(MedicalRecord.class);
-        Root pRoot = q.from(Prescription.class);
-        Root medicineRoot = q.from(Medicine.class);
-        Root sRoot = q.from(MedicalService.class);
+       
         
-        q.where(b.equal(pRoot.get("medicalRecordId"), mRoot.get("id")),
-                b.equal(pRoot.get("medicineId"), medicineRoot.get("id")),
-                b.equal(pRoot.get("medicineId"), medicineRoot.get("id")),
-                b.equal(mRoot.get("medicalServiceId"), sRoot.get("id")),
-                b.isNotNull(mRoot.get("billingDate")),
+        q.where(b.isNotNull(mRoot.get("billingDate")),
                 b.equal(b.function("YEAR", Integer.class, mRoot.get("billingDate")), year));
 
         q.multiselect(b.function("QUARTER", Integer.class, mRoot.get("billingDate")), 
-                b.sum(b.sum(b.prod(pRoot.get("quantity"), medicineRoot.get("unitPrice"))), sRoot.get("price")));
+                b.sum(mRoot.get("total")));
 
         q.groupBy(b.function("QUARTER", Integer.class, mRoot.get("billingDate")));
         q.orderBy(b.asc(b.function("QUARTER", Integer.class, mRoot.get("billingDate"))));
@@ -97,19 +82,12 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
         CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
 
         Root mRoot = q.from(MedicalRecord.class);
-        Root pRoot = q.from(Prescription.class);
-        Root medicineRoot = q.from(Medicine.class);
-        Root sRoot = q.from(MedicalService.class);
-        
-        q.where(b.equal(pRoot.get("medicalRecordId"), mRoot.get("id")),
-                b.equal(pRoot.get("medicineId"), medicineRoot.get("id")),
-                b.equal(pRoot.get("medicineId"), medicineRoot.get("id")),
-                b.equal(mRoot.get("medicalServiceId"), sRoot.get("id")),
-                b.isNotNull(mRoot.get("billingDate")),
+      
+        q.where(b.isNotNull(mRoot.get("billingDate")),
                 b.equal(b.function("YEAR", Integer.class, mRoot.get("billingDate")), year));
 
         q.multiselect(b.function("MONTH", Integer.class, mRoot.get("billingDate")), 
-                b.sum(b.sum(b.prod(pRoot.get("quantity"), medicineRoot.get("unitPrice"))), sRoot.get("price")));
+                b.sum(mRoot.get("total")));
 
         q.groupBy(b.function("MONTH", Integer.class, mRoot.get("billingDate")));
         q.orderBy(b.asc(b.function("MONTH", Integer.class, mRoot.get("billingDate"))));
@@ -126,17 +104,10 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
         CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
 
         Root mRoot = q.from(MedicalRecord.class);
-        Root pRoot = q.from(Prescription.class);
-        Root medicineRoot = q.from(Medicine.class);
-        Root sRoot = q.from(MedicalService.class);
         
-        q.where(b.equal(pRoot.get("medicalRecordId"), mRoot.get("id")),
-                b.equal(pRoot.get("medicineId"), medicineRoot.get("id")),
-                b.equal(pRoot.get("medicineId"), medicineRoot.get("id")),
-                b.equal(mRoot.get("medicalServiceId"), sRoot.get("id")),
-                b.isNotNull(mRoot.get("billingDate")));
+        q.where(b.isNotNull(mRoot.get("billingDate")));
 
-        q.multiselect(b.sum(b.sum(b.prod(pRoot.get("quantity"), medicineRoot.get("unitPrice"))), sRoot.get("price")));
+        q.multiselect(b.sum(mRoot.get("total")));
         Query query = session.createQuery(q);
         return query.getResultList();
     }

@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="form-floating input-row">
-                        <form:input type="number" path="quantity" class="form-control" id="quantityMedicine" placeholder="Nhap so luong" name="name" />
+                        <form:input type="number" value="1" path="quantity" class="form-control" id="quantityMedicine" placeholder="Nhap so luong" name="name" />
                         <label for="name">Số lượng</label>
                         <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                         <small></small>
@@ -134,17 +134,7 @@
                     <th>Ghi chú</th>
                     <th></th>
                 </tr>
-                <tbody>
-                    <c:forEach items="${medicineInPrescription}" var="m">
-                        <tr>
-                            <td>${m[4]}</td>
-                            <td>${m[5]}</td>
-                            <td>${m[6]}</td>
-                            <td><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${m[7]}" /></td>
-                            <td>${m[8]}</td>
-                            <td><i style="color: lightgray" class="fas fa-minus"></i></td>
-                        </tr>
-                    </c:forEach>
+                <tbody id="MyMedicineInPrescription">
                 </tbody>
             </table>
         </form>
@@ -191,6 +181,13 @@
 </div>
 
 <script src="<c:url value="/js/prescribeTheDrug.js" />"></script>
+<script>
+    <c:url value="/api/medicineInPre/${info[0][0]}" var="m" />
+                    window.onload = function () {
+                        getMedicineInPrescription('${m}');
+                    };
+</script>
+
 
 
 

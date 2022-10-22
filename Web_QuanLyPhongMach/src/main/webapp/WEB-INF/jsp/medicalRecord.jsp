@@ -1,7 +1,7 @@
 <%-- 
     Document   : medicalRecord
-    Created on : Aug 21, 2022, 10:55:14 AM
-    Author     : vinhp
+    Created on : Aug 25, 2022, 3:25:33 PM
+    Author     : phamt
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

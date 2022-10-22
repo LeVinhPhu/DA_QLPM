@@ -66,7 +66,6 @@ public class MedicineRepositoryImpl implements MedicineRepository {
         q.orderBy(b.asc(mRoot.get("name")));
 
         if (params != null) {
-            List<Predicate> predicates = new ArrayList<>();
             String kw = params.get("kw");
             
             if (kw != null && !kw.isEmpty()) {

@@ -167,8 +167,7 @@
                         </div>
 
                         <div class="form-floating input-row">
-                            <form:select path="supplierId" class="form-select" id="supplierId" name="supplierId">
-<!--                                <option disabled="disabled" selected="selected" value=""}>Chọn nhà cung cấp</option>-->
+                            <form:select path="supplierId" class="form-select" id="supplierId" name="supplierId">\
                                 <c:forEach items="${suppliers}" var="s">
                                     <option value="${s.id}">${s.companyName}</option>
                                 </c:forEach>
@@ -223,7 +222,7 @@
                 </th>
                 <th>Tên thuốc</th>
                 <th>Số lượng</th>
-                <th>Đơn giá</th>
+                <th>Đơn giá (VNĐ)</th>
                 <th>Đơn vị</th>
                 <th></th>
                 <th></th>

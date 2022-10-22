@@ -109,10 +109,6 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.getAllUsername();
     }
 
-    @Override
-    public boolean check(String phone) {
-        return this.userRepository.check(phone);
-    }
 
     @Override
     public User getUserByUsername(String username) {

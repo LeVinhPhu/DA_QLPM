@@ -33,7 +33,6 @@
         <div class="form-floating input-row">
             <form:input type="number" path="unitPrice" class="form-control" id="mUnitPrice" placeholder="Nhap gia" name="unitPrice" />
             <label for="unitPrice">Đơn giá <span style="color: red">*</span></label>
-            <%--<form:errors path="unitPrice" element="div" style="color: red; font-size: 13px; margin-top: 2px" />--%>
             <small></small>
         </div>
 

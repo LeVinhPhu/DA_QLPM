@@ -8,7 +8,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-        
+
 
 <div class="row  mb-4 mt-3" style="">
     <div class="col-md-9 col-12">
@@ -65,21 +65,21 @@
 
 
 <h2 style="text-align: center; margin-top: 10px">DANH SÁCH ĐĂNG KÝ KHÁM BỆNH</h2>
-<c:if test="${check == 0}">
-    <div data-bs-toggle="modal" data-bs-target="#myModal" style="margin: 8px; width: 20%;"><i class="fas fa-plus"></i>  Đặt lịch</div>
-</c:if>
-    
-    <!--đặt lịch khám-->
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <!-- HEADER & NÚT TẮT -->
-                <div class="modal-header" style="text-align:center">
-                    <h4 class="modal-title" >Đặt lịch khám</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
+<div data-bs-toggle="modal" data-bs-target="#myModal" style="margin: 8px; width: 20%;"><i class="fas fa-plus"></i>  Đặt lịch</div>
 
+
+<!--đặt lịch khám-->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- HEADER & NÚT TẮT -->
+            <div class="modal-header" style="text-align:center">
+                <h4 class="modal-title" >Đặt lịch khám</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <c:if test="${check == 0}">
                 <!-- BODY -->
                 <div class="modal-body">
                     <div>
@@ -106,10 +106,13 @@
                         </form:form>
                     </div>
                 </div>
-
-            </div>
+            </c:if>
+            <c:if test="${check == 1}">
+                <div class="p-5" style="color: red"><i>Cần hoàn thành (hoặc huỷ bỏ) lịch khám đã đăng ký để tiếp tục đặt lịch khám!</i></div>
+            </c:if>
         </div>
-    </div>   
+    </div>
+</div>   
 
 <%--</c:if>--%>
 

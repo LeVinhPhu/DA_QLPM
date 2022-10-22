@@ -59,7 +59,7 @@ function fonCall(endpoint, id) {
     }).then(function (data) {
         console.info(data);
         for (let i = 0; i < data.length; i++)
-            if (data[i].id == id)
+            if (data[i].id === id)
                 document.getElementById('employeeId').setAttribute('value', data[i].id);
     }).catch(function (err) {
         console.error(err);
@@ -125,14 +125,14 @@ btnSubmit.addEventListener('click', function () {
                 });
             });
         });
-        alert('Gửi đăng ký thành công  !');
+        alert('Thành công  !!');
         window.location = "/Web_QuanLyPhongMach/admins/onCallManager";
     }
 
     console.log(temp);
     if (flag && temp <= 0)
     {
-        alert('Gửi đăng ký thành công !');
+        alert('Thành công !');
         window.location = "/Web_QuanLyPhongMach/admins/onCallManager";
     }
 });
@@ -148,8 +148,8 @@ function checkValidate() {
 
     let isCheck = true;
 
-    if (dateOfBirthValues == "") {
-        setError(date, 'Ngày không hợp lệ!');
+    if (dateOfBirthValues === "") {
+        setError(date, 'Ngày không được để trống!');
         isCheck = false;
     }
     // Kiểm tra ngày sinh
