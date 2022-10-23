@@ -23,6 +23,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -63,14 +64,15 @@ public class User implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 24)
+    @Size(min = 1, max = 24, message = "{user.fn.null}")
     @Column(name = "first_name")
     private String firstName;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 24)
+    @Size(min = 1, max = 24, message = "{user.ln.null}")
     @Column(name = "last_name")
     private String lastName;
+    @NotNull(message = "{user.DOB.null}")
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -88,8 +90,8 @@ public class User implements Serializable {
     @Size(max = 45)
     @Column(name = "email")
     private String email;
-    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
-    @Size(max = 20)
+    @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="{user.phones.invalid}")//if the field contains phone or fax number consider using this annotation to enforce field validation
+    @Size(min=1, max = 20, message = "{user.phones.null}")
     @Column(name = "phone")
     private String phone;
     @Size(max = 45)
@@ -97,12 +99,12 @@ public class User implements Serializable {
     private String specialize;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 45, message = "{user.username.null}")
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
     //@NotNull
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 100, message = "{user.password.null}")
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
@@ -145,7 +147,7 @@ public class User implements Serializable {
     // Biến lưu xác nhận mật khẩu
     @Transient // Thông báo biến ko liên quan đến csdl
     //@NotNull
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 100, message = "{user.confirmpassword.null}")
     private String confirmPassword;
     
     public User() {

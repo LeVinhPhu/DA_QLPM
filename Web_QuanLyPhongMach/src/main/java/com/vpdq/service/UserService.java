@@ -51,4 +51,6 @@ public interface UserService extends UserDetailsService{
     List<Object[]> patientStatisticsByQuater(int year);
 
     List<Object[]> patientStatisticsByMonth(int year);
+    
+    boolean checkUsernameExists(String u);
 }

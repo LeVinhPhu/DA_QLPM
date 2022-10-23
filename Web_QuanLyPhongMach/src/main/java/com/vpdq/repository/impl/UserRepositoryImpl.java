@@ -349,4 +349,22 @@ public class UserRepositoryImpl implements UserRepository {
         return query.getResultList();
     }
 
+    @Override
+    public boolean checkUsernameExists(String u) {
+        boolean kq = false;
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        CriteriaQuery<User> query = builder.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+
+        query.select(root);
+        query.where(builder.equal(root.get("username"), u));
+
+        if (session.createQuery(query).uniqueResult() != null)
+            kq = true;
+    
+        return kq;
+    }
+
 }

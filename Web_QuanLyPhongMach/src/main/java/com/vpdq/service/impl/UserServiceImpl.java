@@ -158,4 +158,9 @@ public class UserServiceImpl implements UserService {
     public List<Object[]> patientStatisticsByMonth(int year) {
         return this.userRepository.patientStatisticsByMonth(year);
     }
+
+    @Override
+    public boolean checkUsernameExists(String u) {
+        return this.userRepository.checkUsernameExists(u);
+    }
 }

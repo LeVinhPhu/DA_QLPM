@@ -27,29 +27,22 @@ btnSubmit.addEventListener('click', function () {
     if (!checkValidate()) {
         $(document).ready(function () {
             $('form').submit(function (e) {
+                e.preventDefault();
+            });
+        });
+    } else {
+        $(document).ready(function () {
+            $('form').submit(function () {
                 $.ajax({
                     method: $(this).attr('method'),
                     url: $(this).attr('action'),
                     data: $(this).serialize()
                 });
-                e.preventDefault();
             });
         });
-    } else {
-        fetch('/Web_QuanLyPhongMach/api/username').then(function (res) {
-            return  res.json();
-        }).then(function (data) {
-            let check = true;
-            for (let i = 0; i < data.length; i++)
-                if (data[i] === username.value) {
-                    check = false;
-                    setError(username, 'Tài khoản đã tồn tại');
-                }
-            if (check) {
-                window.location = "/Web_QuanLyPhongMach/login";
-            }
+        alert("Đăng ký tài khoản thành công");
+        window.location = "/Web_QuanLyPhongMach/login";
 
-        });
     }
 });
 
