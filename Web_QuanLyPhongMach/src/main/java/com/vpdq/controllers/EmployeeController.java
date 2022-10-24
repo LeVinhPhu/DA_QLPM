@@ -100,17 +100,14 @@ public class EmployeeController {
         customer.setId(cusID);
         m.setCustomerId(customer);
 
-        if (rs.hasErrors())
-        {
+        if (rs.hasErrors()) {
             return "medicalRecord";
         }
 
-        if (this.medicalRecordService.addMedicalRecord(m) == true)
-        {
+        if (this.medicalRecordService.addMedicalRecord(m) == true) {
             Appointment a1 = this.appointmentService.getAppointmentByIdCustomer(cusID);
 
-            if (this.appointmentService.changeStatusAppointmentByID(a1.getId(), 3))
-            {
+            if (this.appointmentService.changeStatusAppointmentByID(a1.getId(), 3)) {
                 return "redirect:/employees/prescription";
             }
         }
@@ -139,8 +136,7 @@ public class EmployeeController {
             @RequestParam Map<String, String> params) {
 
         model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(null));
-        if (kw != null && !kw.isEmpty())
-        {
+        if (kw != null && !kw.isEmpty()) {
             model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(kw));
         }
 
@@ -165,15 +161,12 @@ public class EmployeeController {
         m.setId(medicalRecordID);
         p.setMedicalRecordId(m);
 
-        if (addMedicine != 0)
-        {
-            if (this.prescriptionService.addPrescription(p) == true)
-            {
+        if (addMedicine != 0) {
+            if (this.prescriptionService.addPrescription(p) == true) {
                 model.addAttribute("medicineInPrescription", this.prescriptionService.getPreByMedicalRecordID(medicalRecordID));
                 model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(null));
                 model.addAttribute("info", this.medicalRecordService.getInfoMedicalRecordByID(medicalRecordID));
-                if (kw != null && !kw.isEmpty())
-                {
+                if (kw != null && !kw.isEmpty()) {
                     model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(kw));
                 }
                 return "prescribeTheDrug";
@@ -212,8 +205,7 @@ public class EmployeeController {
         model.addAttribute("medicalRecordID", medicalRecordID);
         java.util.Date date = new java.util.Date();
         User e = (User) session.getAttribute("currentUser");
-        if (this.medicalRecordService.payment(medicalRecordID, e.getId(), date, totals))
-        {
+        if (this.medicalRecordService.payment(medicalRecordID, e.getId(), date, totals)) {
             model.addAttribute("medicalRecordForNurse", this.medicalRecordService.getMedicalRecordForPayment());
             return "billsManager";
         }
@@ -230,11 +222,11 @@ public class EmployeeController {
     public String ChangeStatusForAppointment(Model model,
             @RequestParam(value = "idAppointment", defaultValue = "0", required = false) int idAppointment) throws MessagingException, UnsupportedEncodingException {
 
-        if (idAppointment == 0)
+        if (idAppointment == 0) {
             return "appointmentsManager";
+        }
 
-        if (this.appointmentService.changeStatusAppointmentByID(idAppointment, 2))
-        {
+        if (this.appointmentService.changeStatusAppointmentByID(idAppointment, 2)) {
             Object[] ob = this.appointmentService.getCusFromAppointmentById(idAppointment).get(0);
             String contentbody = "P&QCLINIC - Đã xác nhận lịch khám của bạn"
                     + ". Xin Cảm ơn.";
@@ -243,5 +235,18 @@ public class EmployeeController {
             return "nursesIndex";
         }
         return "appointmentsManager";
+    }
+
+    //Hồ sơ bệnh nhân
+    @GetMapping("/medicalRecordOfCustomer")
+    public String medicalRecordOfCustomer(Model model,
+            @RequestParam(value = "kw", defaultValue = "", required = false) String kw,
+            @RequestParam Map<String, String> params) {
+
+        model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(null));
+        if (kw != null && !kw.isEmpty()) {
+            model.addAttribute("medicines", this.medicineService.getMedicinesByKeyword(kw));
+        }
+        return "medicalRecordOfCustomer";
     }
 }

@@ -48,7 +48,7 @@
     </div>
 
     <div class = "col-md-1 col-12 mt-2 mb-2" style="align-items: center;">
-        <a href="/Web_QuanLyPhongMach/employees/doctorsIndex" style="color: black; text-decoration: none">
+        <a href="/Web_QuanLyPhongMach/employees/medicalRecordOfCustomer" style="color: black; text-decoration: none">
             <div class="card bg-light shadow rounded-3" style="text-align: center; align-items: center;border: none">
                 <div class="mt-3 mb-2">
                     <img class="card-img-top"
@@ -56,7 +56,7 @@
                          alt="Card image"
                          style="width:50%">
                 </div>
-                <h6 class="card-title" style="font-size: 13px;font-weight: bold">Khám Bệnh</h6>
+                <h6 class="card-title" style="font-size: 13px;font-weight: bold">Hồ Sơ</h6>
             </div>
         </a>
     </div>

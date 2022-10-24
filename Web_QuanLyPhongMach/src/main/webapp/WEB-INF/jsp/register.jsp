@@ -102,7 +102,7 @@
             </div>
 
             <div class="form-floating mb-4" style="text-align: center">
-                <span style="font-size: 12px">Bạn đã có tài khoản? <a href="/Web_QuanLyPhongMach/login/roleCustomer" style="text-decoration: none">Đăng nhập</a></span>
+                <span style="font-size: 12px">Bạn đã có tài khoản? <a href="/Web_QuanLyPhongMach/login" style="text-decoration: none">Đăng nhập</a></span>
             </div>
         </form:form>  
     </div>

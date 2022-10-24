@@ -54,8 +54,8 @@
                      style="width:60%">
             </div>
             <div class="card-body">
-                <h4 class="card-title">Khám Bệnh</h4>
-                <a href="<c:url value="/employees/medicalRecord"/>" class="btn btn-primary">Xác Nhận</a>
+                <h4 class="card-title">Hồ Sơ Bệnh Nhân</h4>
+                <a href="<c:url value="/employees/medicalRecordOfCustomer"/>" class="btn btn-primary">Xác Nhận</a>
             </div>
         </div>
     </div>

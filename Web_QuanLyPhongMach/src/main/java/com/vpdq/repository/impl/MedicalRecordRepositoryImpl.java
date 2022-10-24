@@ -278,6 +278,7 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
         q.where(b.equal(mRRoot.get("doctorId"), aRoot.get("id")),
                 b.equal(mRRoot.get("customerId"), cRoot.get("id")));
         q.multiselect(
+                mRRoot.get("id"),
                 aRoot.get("firstName"),
                 aRoot.get("lastName"),
                 mRRoot.get("symptom"),
@@ -287,5 +288,4 @@ public class MedicalRecordRepositoryImpl implements MedicalRecordRepository {
 
         return query.getResultList();
     }
-
 }
