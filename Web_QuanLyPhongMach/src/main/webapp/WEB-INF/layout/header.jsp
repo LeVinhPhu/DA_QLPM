@@ -93,6 +93,11 @@
                             <a id = "role" class="dropdown-item" href="/Web_QuanLyPhongMach/customers/customersProfile">Thông tin cá nhân</a>
                         </c:if>
                     </li>
+                                        <li>
+                        <c:if test="${currentUser.userRole.equals('ROLE_CUSTOMER')}">
+                            <a id = "role" class="dropdown-item" href="/Web_QuanLyPhongMach/customers/changePasswordCustomer">Đổi mật khẩu</a>
+                        </c:if>
+                    </li>
                     <li>
                         <c:if test="${currentUser != null}">
                             <a class="dropdown-item" href="<c:url value="/logout" />">Đăng xuất</a>

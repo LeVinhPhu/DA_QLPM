@@ -103,9 +103,19 @@
         <label for="note">Ghi chú</label>
     </div>
 
-    <div class="form-floating mt-2" style="text-align: right">
-        <input type="submit" id="btnUpdate" value="Lưu thông tin" class="btn mb-3 mt-3" style="background-color: #d1e7dd" />
+    <div class="row mt-3 mb-3" style="text-align: right">
+        <div class="col-md-10">
+        </div> 
+        <div class="col-md-1">
+            <div class="form-floating" style="text-align: right">
+                <input type="submit" id="btnUpdate" value="Lưu thông tin" class="btn btn-primary" />
+            </div>
+        </div>
+        <div class="col-md-1">
+            <a href="<c:url value="/customers/customersIndex"/>" class="btn btn-primary" style="" >Huỷ</a>
+        </div> 
     </div>
+
 </form:form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>

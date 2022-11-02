@@ -193,5 +193,11 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
                        value="/WEB-INF/jsp/customersProfile.jsp" />
     </definition>
     
+    <definition name="changePasswordCustomer" extends="baseLayout">
+        <put-attribute name="title" value="Thay đổi mật khẩu" />
+        <put-attribute name="content"
+                       value="/WEB-INF/jsp/changePasswordCustomer.jsp" />
+    </definition>
+    
 </tiles-definitions>
 

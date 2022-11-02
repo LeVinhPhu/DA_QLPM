@@ -313,7 +313,9 @@
                                         <div class="mb-2 mt-2">
                                             <input type="number" class="form-control" placeholder="Nhập năm" name="year">
                                         </div>
-                                        <button type="submit" class="btn btn-primary" style="margin-bottom: 5px; margin-right: 0" >Thống kê</button>
+                                        <div style="text-align: right">
+                                            <button type="submit" class="btn btn-primary" style="margin-bottom: 5px; margin-right: 0" >Thống kê</button>
+                                        </div>
                                     </form>
                                     <div style="width: 60%; margin-left: 20%"  >
                                         <canvas id="myChart2"></canvas>
@@ -370,8 +372,9 @@
                                         <div class="mb-2 mt-2">
                                             <input type="number" id="year2" class="form-control" placeholder="Nhập năm" name="year2">
                                         </div>
-                                        <button type="submit "class="btn btn-primary" style="margin-bottom: 5px">Thống kê</button>
-
+                                        <div style="text-align: right">
+                                            <button type="submit "class="btn btn-primary" style="margin-bottom: 5px">Thống kê</button>
+                                        </div>
                                     </form>
                                     <canvas id="myChart3"></canvas>
                                 </div>

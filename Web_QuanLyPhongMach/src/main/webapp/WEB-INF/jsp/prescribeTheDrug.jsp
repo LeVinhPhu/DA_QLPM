@@ -80,6 +80,7 @@
 
                 <c:url value="/employees/prescription/${medicalRecordID}" var="action" />
                 <form:form method="post" action="${action}" modelAttribute="prescription" enctype="multipart/form-data" id="FormAddMedicine">
+                    <input type="hidden" value="${medicalRecordID}" id="idMedi"/>
                     <div class="form-floating input-row">
                         <form:select path="medicineId" class="form-select" id="medicineId" name="medicineId">
                             <c:forEach items="${medicine}" var="m">

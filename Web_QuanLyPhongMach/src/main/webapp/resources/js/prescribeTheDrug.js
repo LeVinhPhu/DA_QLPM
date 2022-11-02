@@ -8,6 +8,7 @@
 const quantity = document.getElementById('quantityMedicine');
 const btnAddMedicine = document.getElementById('btnAddMedicine');
 const input = document.querySelectorAll('.input-row');
+const idMedi = document.getElementById('idMedi');
 
 var temp = 0;
 btnAddMedicine.addEventListener('click', function () {
@@ -38,11 +39,11 @@ btnAddMedicine.addEventListener('click', function () {
                 });
             });
         });
-        location.reload(true);
+        window.location = `/Web_QuanLyPhongMach/employees/prescription/${idMedi.value}`;
     }
 
     if (flag && temp === 0) {
-        location.reload(true);
+        window.location = `/Web_QuanLyPhongMach/employees/prescription/${idMedi.value}`;
     }
 });
 

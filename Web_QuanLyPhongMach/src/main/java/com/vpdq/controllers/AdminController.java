@@ -6,6 +6,8 @@ package com.vpdq.controllers;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.vpdq.mail.Mail;
+import com.vpdq.pojo.Department;
 import com.vpdq.pojo.Medicine;
 import com.vpdq.pojo.OnCall;
 import com.vpdq.pojo.User;
@@ -18,8 +20,12 @@ import com.vpdq.service.UnitService;
 import com.vpdq.service.UserService;
 import com.vpdq.utils.Search;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.Map;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,7 +100,6 @@ public class AdminController {
      *
      * @return
      */
-    
     //-----------ADMIN----------------------------------------------------------------------------------------------
     @GetMapping("/adminsManager")
     public String adminsMager(Model model,
@@ -175,7 +180,6 @@ public class AdminController {
         }
         return "adminsManager";
     }
-
 
     //------------EMPLOYEE----------------------------------------------------------------------------------
     @GetMapping("/employeesManager")
@@ -394,7 +398,7 @@ public class AdminController {
         Search.setParam(params);
         return "medicinesManager";
     }
-    
+
     //Thêm thuốc
     @PostMapping("/medicinesManager")
     public String addMedicine(@ModelAttribute(value = "medicineUP")
@@ -454,7 +458,7 @@ public class AdminController {
         } else {
             m.setImage(me.getImage());
         }
-        
+
         if (rs.hasErrors()) {
             return "updateMedicine";
         }
@@ -478,11 +482,28 @@ public class AdminController {
     //Thêm lịch trực
     @PostMapping("/onCallManager")
     public String addOnCall(@ModelAttribute(value = "onCall") @Valid OnCall ocl,
-            BindingResult r) {
+            BindingResult r) throws MessagingException, UnsupportedEncodingException {
         if (r.hasErrors()) {
             return "onCallManager"; //return lổi
         }
+
         if (this.onCallService.addOnCall(ocl) == true) {
+            //Lấy ngày
+            Date temp = (Date) ocl.getDate();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            String date = (String) sdf.format(temp);
+            //Lấy Phòng
+            Department dpmt = departmentService.getDepartmentByID(ocl.getDepartmentId().getId());
+            String room = dpmt.getName();
+            //lấy mail nhân viên
+            User empl = userService.getUserByID(ocl.getEmployeeId().getId());
+            String mail = (String) empl.getEmail();
+            //lấy tên nhân viên
+            String nameEmpl = (String) empl.getFirstName() + " " + empl.getLastName();
+            //Gửi mail
+            String contentbody = "P&QCLINIC - Bạn: " + nameEmpl + " có lịch trực vào ngày: "
+                    + date + " - Phòng: " + room + ". Xin Cảm ơn.";
+            Mail.SendEmail(contentbody, mail);
             return "redirect:onCallManager"; //return về trang gì đó
         }
         return "onCallManager";

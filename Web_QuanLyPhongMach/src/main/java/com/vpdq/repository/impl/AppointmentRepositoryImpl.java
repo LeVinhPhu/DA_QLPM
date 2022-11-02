@@ -155,8 +155,8 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
 
         q.multiselect(croot.get("id"),
                 croot.get("email"),
-                aroot.get("date"));
-
+                aroot.get("date"),
+                aroot.get("time"));
         Query<Object[]> query = session.createQuery(q);
         return query.getResultList();
     }

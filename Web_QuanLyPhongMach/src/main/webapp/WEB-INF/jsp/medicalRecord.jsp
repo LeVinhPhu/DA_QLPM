@@ -99,7 +99,7 @@
                 <label for="note">Ghi chú:</label>
             </div>
             <div class="form-floating mt-2" style="text-align: right">
-                <input type="submit" id="btnAdd" value="Lập phiếu khám" class="btn btn btn-warning"/>
+                <input type="submit" id="btnAdd" value="Lập phiếu khám" class="btn btn btn-primary"/>
             </div>
 
         </form:form>

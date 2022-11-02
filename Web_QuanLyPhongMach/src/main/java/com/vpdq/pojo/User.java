@@ -90,8 +90,8 @@ public class User implements Serializable {
     @Size(max = 45)
     @Column(name = "email")
     private String email;
-    @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="{user.phones.invalid}")//if the field contains phone or fax number consider using this annotation to enforce field validation
-    @Size(min=1, max = 20, message = "{user.phones.null}")
+    @Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message = "{user.phones.invalid}")//if the field contains phone or fax number consider using this annotation to enforce field validation
+    @Size(min = 1, max = 20, message = "{user.phones.null}")
     @Column(name = "phone")
     private String phone;
     @Size(max = 45)
@@ -143,13 +143,28 @@ public class User implements Serializable {
     // Biến lưu file hình ảnh
     @Transient // Thông báo biến ko liên quan đến csdl
     private MultipartFile file;
-    
+
     // Biến lưu xác nhận mật khẩu
     @Transient // Thông báo biến ko liên quan đến csdl
     //@NotNull
     @Size(min = 1, max = 100, message = "{user.confirmpassword.null}")
     private String confirmPassword;
+
+    // Biến lưu xác nhận mật khẩu
+    @Transient // Thông báo biến ko liên quan đến csdl
+    //@NotNull
+    @Size(min = 1, max = 100, message = "{user.oldPassword.null}")
+    private String oldPassword;
     
+    @Transient 
+    @Size(min = 1, max = 100, message = "{user.newPassword.null}")
+    private String newPassword;
+    
+    @Transient 
+    @Size(min = 1, max = 100, message = "{user.confirmNewPassword.null}")
+    private String confirmNewPassword;
+    
+
     public User() {
     }
 
@@ -401,5 +416,47 @@ public class User implements Serializable {
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
-    
+
+    /**
+     * @return the oldPassword
+     */
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    /**
+     * @param oldPassword the oldPassword to set
+     */
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
+
+    /**
+     * @return the newPassword
+     */
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    /**
+     * @param newPassword the newPassword to set
+     */
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    /**
+     * @return the confirmNewPassword
+     */
+    public String getConfirmNewPassword() {
+        return confirmNewPassword;
+    }
+
+    /**
+     * @param confirmNewPassword the confirmNewPassword to set
+     */
+    public void setConfirmNewPassword(String confirmNewPassword) {
+        this.confirmNewPassword = confirmNewPassword;
+    }
+
 }

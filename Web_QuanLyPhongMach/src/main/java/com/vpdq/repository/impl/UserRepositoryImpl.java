@@ -236,7 +236,7 @@ public class UserRepositoryImpl implements UserRepository {
         CriteriaQuery<User> q = b.createQuery(User.class);
         Root root = q.from(User.class);
         q.select(root);
-        q.where(b.or(b.equal(root.get("userRole"), "ROLE_ADMIN"), b.equal(root.get("userRole"), "ROLE_SUPERADMIN")));
+        q.where(b.equal(root.get("userRole"), "ROLE_ADMIN"));
         if (params != null) {
             List<Predicate> predicates = new ArrayList<>();
 
@@ -365,6 +365,22 @@ public class UserRepositoryImpl implements UserRepository {
             kq = true;
     
         return kq;
+    }
+
+    @Override
+    public boolean updatePasswordUser(int id, User user) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        User u = getUserByID(id);
+        
+        u.setPassword(user.getPassword());
+  
+        try {
+            session.saveOrUpdate(u);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 
 }

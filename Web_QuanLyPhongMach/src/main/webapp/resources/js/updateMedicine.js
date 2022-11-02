@@ -42,13 +42,13 @@ btnUpdate.addEventListener('click', function () {
                 });
             });
         });
-        alert('Sửa thành công');
+        alert('Sửa thuốc thành công');
         window.location="/Web_QuanLyPhongMach/admins/medicinesManager";
         getMedicines('/Web_QuanLyPhongMach/api/medicines');
     }
 
     if (flag && t === 0) {
-        alert('Sửa thành công');
+        alert('Sửa thuốc thành công');
         window.location="/Web_QuanLyPhongMach/admins/medicinesManager";
         getMedicines('/Web_QuanLyPhongMach/api/medicines');
     }

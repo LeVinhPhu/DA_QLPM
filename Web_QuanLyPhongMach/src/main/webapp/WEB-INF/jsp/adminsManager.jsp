@@ -116,10 +116,10 @@
 </div>   
 
 
-<h2 style="text-align: center; margin-top: 10px; font-family:initial">QUẢN LÝ ADMIN</h2>
+<h2 style="text-align: center; margin-top: 10px; font-family:initial">QUẢN LÝ QUẢN TRỊ VIÊN</h2>
 
 <div class="row mt-4 mb-4">
-    <div class="col-md-9 col-12"><div data-bs-toggle="modal" data-bs-target="#myModal" style="margin: 8px; width: 20%"><i class="fas fa-plus"></i>  Thêm admin</div></div>
+    <div class="col-md-9 col-12"><div data-bs-toggle="modal" data-bs-target="#myModal" style="margin: 8px; width: 20%"><i class="fas fa-plus"></i>  Thêm mới</div></div>
     <div class="col-md-3 col-12">
         <c:url value="/admins/adminsManager" var="action" />
         <form action="${action}" class="d-flex">
@@ -179,12 +179,12 @@
 
 <!-- THÊM ADMIN -->
 <div class="modal" id="myModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <!-- HEADER & NÚT TẮT -->
             <div class="modal-header" style="text-align:center">
-                <h4 class="modal-title" >Thêm Admin</h4>
+                <h4 class="modal-title" >Thêm Quản Trị Viên</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
@@ -194,22 +194,27 @@
                     <c:url value="/admins/adminsManager" var="action" />
                     <form:form id="myFormAdd" method="post" action="${action}" modelAttribute="adminUP" enctype="multipart/form-data">
 
-                        <div class="form-floating input-row">
-                            <form:input type="text" path="firstName" class="form-control" id="firstName" placeholder="Nhap ho ten dem" name="firstName" />
-                            <label for="firstName">Họ và tên đệm:</label>
-                            <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
-                            <small></small>
-                        </div>
-
-                        <div class="form-floating input-row">
-                            <form:input type="text" path="lastName" class="form-control" id="lastName" placeholder="Nhap ten" name="lastName" />
-                            <label for="lastName">Tên:</label>
-                            <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
-                            <small></small>
-                        </div>
-
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-6">
+                                <div class="form-floating input-row">
+                                    <form:input type="text" path="firstName" class="form-control" id="firstName" placeholder="Nhap ho ten dem" name="firstName" />
+                                    <label for="firstName">Họ và tên đệm:</label>
+                                    <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
+                                    <small></small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating input-row">
+                                    <form:input type="text" path="lastName" class="form-control" id="lastName" placeholder="Nhap ten" name="lastName" />
+                                    <label for="lastName">Tên:</label>
+                                    <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
+                                    <small></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="input-row form-floating">
                                     <form:input type="date" class="form-control" path="dateOfBirth" id="dateOfBirth" value="0000-00-00"/>
                                     <label for="dateOfBirth">Ngày Sinh:</label>
@@ -218,7 +223,7 @@
                                 </div> 
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="input-row form-floating">
                                     <form:select path="sex" class="form-select" id="sex" name="sex">
                                         <option value="Nam">Nam</option>
@@ -232,23 +237,28 @@
                             </div>
                         </div>            
 
-                        <div class="form-floating input-row">
-                            <form:input type="text" path="email" class="form-control" id="email" placeholder="Nhap email" name="email" />
-                            <label for="email">Email:</label>
-                            <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
-                            <small></small>
-                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating input-row">
+                                    <form:input type="text" path="email" class="form-control" id="email" placeholder="Nhap email" name="email" />
+                                    <label for="email">Email:</label>
+                                    <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
+                                    <small></small>
+                                </div>
+                            </div>
 
-                        <div class="form-floating input-row">
-                            <form:input type="number" path="phone" class="form-control" id="phone" placeholder="Nhap phone" name="phone" />
-                            <label for="phone">Số điện thoại:</label>
-                            <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
-                            <small></small>
-                        </div>
-
+                            <div class="col-md-6">
+                                <div class="form-floating input-row">
+                                    <form:input type="number" path="phone" class="form-control" id="phone" placeholder="Nhap phone" name="phone" />
+                                    <label for="phone">Số điện thoại:</label>
+                                    <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
+                                    <small></small>
+                                </div>
+                            </div>
+                        </div>             
 
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <div class="form-floating input-row">
                                     <form:input type="text" path="address" class="form-control" id="address" placeholder="Nhap dia chi" name="address" />
                                     <label for="address">Địa chỉ:</label>
@@ -257,7 +267,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-floating input-row">
                                     <form:input type="text" path="specialize" class="form-control" id="specialize" placeholder="Nhap chuyen khoa" name="specialize" />
                                     <label for="specialize">Chuyên khoa:</label>
@@ -300,8 +310,7 @@
                         </div>
 
                         <div class="form-floating input-row">
-                            <form:input type="text" path="note" class="form-control" id="note" placeholder="Ghi chu" name="note" />
-                            <label for="note">Ghi chú</label>
+                            <form:input type="hidden" path="note" class="form-control" id="note" placeholder="Ghi chu" name="note" />
                         </div>
 
                         <div class="form-floating mt-2" style="text-align: right">

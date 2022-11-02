@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+
     //-----------------User-----------------
     @Override
     public boolean addUser(User user) {
@@ -162,5 +163,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean checkUsernameExists(String u) {
         return this.userRepository.checkUsernameExists(u);
+    }
+
+    @Override
+    public boolean updatePasswordUser(int id, User user) {
+        String pass = user.getPassword();
+        user.setPassword(this.passwordEncoder.encode(pass));
+        
+        return this.userRepository.updatePasswordUser(id, user);
     }
 }

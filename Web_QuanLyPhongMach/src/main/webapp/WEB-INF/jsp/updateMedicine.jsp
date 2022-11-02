@@ -14,7 +14,7 @@
 <h3 style="text-align: center">${medicine1.name}</h3>
 <c:url value="/admins/medicinesManager/${medicine1.id}" var="action" />
 <form:form id="formUpdate" method="post" action="${action}" modelAttribute="medicine1" enctype="multipart/form-data">
-    <div style="width: 50%; margin-left: 25%">
+    <div>
         <div class="form-floating input-row">
             <form:input type="text" path="name" class="form-control" id="mName" placeholder="Nhap ten" name="name" />
             <label for="name">Tên thuốc <span style="color: red">*</span></label>
@@ -58,8 +58,18 @@
             <form:input type="text" path="note" class="form-control" id="name" placeholder="Nhap ten" name="name" />
             <label for="name">Ghi chú</label>
         </div>
-            <div class="mt-2 mb-3" style="text-align: right">
-            <input id="btnUpdate" type="submit" value="Sửa thuốc" class="btn btn-warning" />
+
+        <div class="row mt-3 mb-3" style="text-align: right">
+            <div class="col-md-10">
+            </div> 
+            <div class="col-md-1">
+                <div class="" style="text-align: right">
+                    <input id="btnUpdate" type="submit" value="Sửa thuốc" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="col-md-1">
+                <a href="<c:url value="/admins/medicinesManager"/>" class="btn btn-primary" style="" >Huỷ</a>
+            </div> 
         </div>    
     </div>
 

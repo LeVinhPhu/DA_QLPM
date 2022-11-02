@@ -4,6 +4,7 @@
     Author     : vinhp
 --%>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -19,20 +20,27 @@
 
 <c:url value="/admins/updateEmployee/${employeeUpdate.id}" var="action" />
 <form:form id="formUpdate" method="post" action="${action}" modelAttribute="employeeUpdate" enctype="multipart/form-data">
-    <div class="form-floating input-row">
-        <form:input type="text" path="firstName" class="form-control" id="firstName" placeholder="Nhap ho ten dem" name="firstName" />
-        <label for="firstName">Họ và tên đệm:</label>
-        <small></small>
-    </div>
 
-    <div class="form-floating input-row">
-        <form:input type="text" path="lastName" class="form-control" id="lastName" placeholder="Nhap ten" name="lastName" />
-        <label for="lastName">Tên:</label>
-        <small></small>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-floating input-row">
+                <form:input type="text" path="firstName" class="form-control" id="firstName" placeholder="Nhap ho ten dem" name="firstName" />
+                <label for="firstName">Họ và tên đệm:</label>
+                <small></small>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-floating input-row">
+                <form:input type="text" path="lastName" class="form-control" id="lastName" placeholder="Nhap ten" name="lastName" />
+                <label for="lastName">Tên:</label>
+                <small></small>
+            </div>
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="input-row form-floating">
                 <form:input type="date" class="form-control" path="dateOfBirth" id="dateOfBirth"/>
                 <label for="dateOfBirth">Ngày Sinh:</label>
@@ -41,7 +49,7 @@
             </div> 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="input-row form-floating">
                 <form:select path="sex" class="form-select" id="sex" name="sex">
                     <c:if test="${employeeUpdate.sex.equals('Nam')}">
@@ -67,21 +75,27 @@
         </div>
     </div>            
 
-    <div class="form-floating input-row">
-        <form:input type="text" path="email" class="form-control" id="email" placeholder="Nhap email" name="email" />
-        <label for="email">Email:</label>
-        <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
-        <small></small>
-    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-floating input-row">
+                <form:input type="text" path="email" class="form-control" id="email" placeholder="Nhap email" name="email" />
+                <label for="email">Email:</label>
+                <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
+                <small></small>
+            </div>
+        </div>
 
-    <div class="form-floating input-row">
-        <form:input type="number" path="phone" class="form-control" id="phone" placeholder="Nhap phone" name="phone" />
-        <label for="phone">Số điện thoại:</label>
-        <small></small>
-    </div>
+        <div class="col-md-6">
+            <div class="form-floating input-row">
+                <form:input type="number" path="phone" class="form-control" id="phone" placeholder="Nhap phone" name="phone" />
+                <label for="phone">Số điện thoại:</label>
+                <small></small>
+            </div>
+        </div>
+    </div>            
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="form-floating input-row">
                 <form:input type="text" path="specialize" class="form-control" id="specialize" placeholder="Nhap chuyen khoa" name="specialize" />
                 <label for="specialize">Chuyên khoa:</label>
@@ -89,7 +103,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="input-row form-floating">
                 <form:select path="userRole" class="form-select" id="userRole" name="userRole">
                     <c:if test="${employeeUpdate.userRole.equals('ROLE_DOCTOR')}">
@@ -129,9 +143,20 @@
         <label for="note">Ghi chú</label>
     </div>
 
-    <div class="form-floating mt-2" style="text-align: right">
-        <input type="submit" id="btnUpdate" value="Lưu thông tin" class="btn mb-3 mt-3" style="background-color: #d1e7dd" />
+    <div class="row mt-3 mb-3" style="text-align: right">
+        <div class="col-md-10">
+        </div> 
+        <div class="col-md-1">
+            <div class="form-floating" style="text-align: right">
+                <input type="submit" id="btnUpdate" value="Lưu thông tin" class="btn btn-primary" style="" />
+            </div>
+        </div>
+        <div class="col-md-1">
+            <a href="<c:url value="/admins/employeesManager"/>" class="btn btn-primary" style="" >Huỷ</a>
+        </div> 
     </div>
+
+
 </form:form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>

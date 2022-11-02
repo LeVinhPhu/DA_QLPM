@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface DepartmentRepository {
     List<Department> getDepartment();
+    Department getDepartmentByID(String departmentId);
 }

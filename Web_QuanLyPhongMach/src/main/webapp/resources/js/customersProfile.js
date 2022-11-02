@@ -46,12 +46,12 @@ btSubmit.addEventListener('click', function () {
                 });
             });
         });
-        alert('Lưu thông tin thành công!\nThông tin sẻ được cập nhật vào lần đăng nhập tiếp theo');
+        alert('Lưu thông tin thành công!\nThông tin sẽ được cập nhật vào lần đăng nhập tiếp theo');
         window.location = "/Web_QuanLyPhongMach/customers/customersIndex";
     }
     if (flag && temp <= 0)
     {
-        alert('Lưu thông tin thành công!!\nThông tin sẻ được cập nhật vào lần đăng nhập tiếp theo');
+        alert('Lưu thông tin thành công!!\nThông tin sẽ được cập nhật vào lần đăng nhập tiếp theo');
     }
 });
 

@@ -137,4 +137,34 @@ public class CustomerController {
         return "customersProfile";
     }
 
+    //
+    @GetMapping("/changePasswordCustomer")
+    public String changePasswordCustomer(Model model) {
+        model.addAttribute("changePasswordCustomer", new User());
+        return "changePasswordCustomer";
+    }
+
+    @PostMapping("/changePasswordCustomer")
+    public String changePasswordCustomer(HttpSession session,
+            @ModelAttribute(value = "changePasswordCustomer") @Valid User c,
+            BindingResult rs) throws IOException {
+
+        if (c.getNote().isEmpty()) {
+            c.setNote(null);
+        }
+
+        if (rs.hasErrors()) {
+            return "customersProfile";
+            //return lổi
+        }
+
+        User ct = (User) session.getAttribute("currentUser");
+        if (c.getPassword().equals(c.getConfirmPassword())) {
+            if (this.userService.updatePasswordUser(ct.getId(), c) == true) {
+                return "customersIndex";
+            }
+        }
+        return "customersProfile";
+    }
+
 }

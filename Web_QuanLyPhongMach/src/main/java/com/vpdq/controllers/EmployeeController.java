@@ -16,6 +16,8 @@ import com.vpdq.service.MedicineService;
 import com.vpdq.service.PrescriptionService;
 import com.vpdq.service.UserService;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
@@ -228,7 +230,14 @@ public class EmployeeController {
 
         if (this.appointmentService.changeStatusAppointmentByID(idAppointment, 2)) {
             Object[] ob = this.appointmentService.getCusFromAppointmentById(idAppointment).get(0);
-            String contentbody = "P&QCLINIC - Đã xác nhận lịch khám của bạn"
+            //Lấy ngày
+            Date temp = (Date) ob[2];
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            String date = sdf.format(temp);
+            //Lấy giờ
+            String time = (String) ob[3];
+            String contentbody = "P&QCLINIC - Phòng khám đã xác nhận lịch khám của bạn. Thời gian: "
+                    + time + " giờ - ngày: " + date + "."
                     + ". Xin Cảm ơn.";
             String mail = (String) ob[1];
             Mail.SendEmail(contentbody, mail);

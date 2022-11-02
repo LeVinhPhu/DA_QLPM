@@ -46,12 +46,12 @@ btSubmit.addEventListener('click', function () {
                 });
             });
         });
-        alert('Gửi đăng ký thành công !');
+        alert('Lưu thông tin thành công !');
         window.location = "/Web_QuanLyPhongMach/admins/employeesManager";
     }
     if (flag && temp <= 0)
     {
-        alert('Gửi đăng ký thành công !!');
+        alert('Lưu thông tin thành công !!');
     }
 });
 

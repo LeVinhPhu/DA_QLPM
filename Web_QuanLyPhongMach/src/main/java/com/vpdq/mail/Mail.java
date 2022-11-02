@@ -30,7 +30,7 @@ public class Mail {
         // Email người nhận
         final String toEmail = toemail;
         //Tiêu Đề
-        final String subject = "Thư Xác Nhận Lịch Khám P&Q CLINCI";
+        final String subject = "Phòng khám P&Q CLINCI";
         //Phần nội dung
         final String body = contentbody;
         //Kết nối mail

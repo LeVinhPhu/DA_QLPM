@@ -31,25 +31,31 @@
                 <form:errors path="lastName" element="div" style="color: red" />
                 <small>Error</small>
             </div>
-            <div class="form-floating input-row">
-                <form:select path="sex" class="form-select" id="sex" name="sex">
-                    <option value="Nam">Nam</option>
-                    <option value="Nữ">Nữ</option>
-                    <option value="Khác">Khác</option>
-                </form:select>
-                <label for="sex" class="form-label">Giới tính</label>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-floating input-row">
+                        <form:select path="sex" class="form-select" id="sex" name="sex">
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                            <option value="Khác">Khác</option>
+                        </form:select>
+                        <label for="sex" class="form-label">Giới tính</label>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-row form-floating">
+                        <form:input path="dateOfBirth" class="form-control" type="date" id="birthday" name="birthday" />
+                        <label for="birthday">Ngày sinh<span style="color: red">*</span></label>
+                        <form:errors path="dateOfBirth" style="color: red" />
+                        <c:if test="${errMsg3 != null}">
+                            <span style="color: red">
+                                ${errMsg3}
+                            </span>  
+                        </c:if>
+                        <small>Error</small>
+                    </div> 
+                </div>
             </div>
-            <div class="input-row form-floating">
-                <form:input path="dateOfBirth" class="form-control" type="date" id="birthday" name="birthday" />
-                <label for="birthday">Ngày sinh<span style="color: red">*</span></label>
-                <form:errors path="dateOfBirth" style="color: red" />
-                <c:if test="${errMsg3 != null}">
-                    <span style="color: red">
-                        ${errMsg3}
-                    </span>  
-                </c:if>
-                <small>Error</small>
-            </div>    
             <div class="form-floating input-row">
                 <form:input type="text" path="address" class="form-control" id="address" placeholder="Nhap dia chi" name="name" />
                 <label for="name">Địa chỉ</label>
@@ -109,4 +115,3 @@
 </div>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<!--<script src="<c:url value="/js/registers.js" />"></script>-->
