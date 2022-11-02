@@ -11,7 +11,6 @@ import com.vpdq.pojo.Supplier;
 import com.vpdq.pojo.Unit;
 import com.vpdq.repository.MedicineRepository;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -37,8 +36,6 @@ public class MedicineRepositoryImpl implements MedicineRepository {
 
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-    @Autowired
-    private Environment env;
 
     @Override
     public List<Object[]> getMedicines(Map<String, String> params, int page) {
@@ -71,7 +68,8 @@ public class MedicineRepositoryImpl implements MedicineRepository {
             if (kw != null && !kw.isEmpty()) {
                 Predicate p = b.like(mRoot.get("name").as(String.class), String.format("%%%s%%", kw));
                 Predicate p2 = b.equal(mRoot.get("unitId"), uRoot.get("id"));
-                q = q.where(b.and(p, p2));
+                Predicate p3 = b.equal(mRoot.get("supplierId"), sRoot.get("id"));
+                q = q.where(b.and(p, b.and(p2, p3)));
             }   
         }
 
@@ -106,31 +104,6 @@ public class MedicineRepositoryImpl implements MedicineRepository {
             ex.printStackTrace();
             return false;
         }
-    }
-
-    @Override
-    public List<Medicine> getMedicines2(Map<String, String> params, int page) {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder b = session.getCriteriaBuilder();
-        CriteriaQuery<Medicine> q = b.createQuery(Medicine.class);
-        Root root = q.from(Medicine.class);
-        q.select(root);
-
-        if (params != null) {
-            List<Predicate> predicates = new ArrayList<>();
-            q.where(predicates.toArray(Predicate[]::new));
-        }
-
-        Query query = session.createQuery(q);
-        if (page > 0) {
-            int size = Integer.parseInt(env.getProperty("page.size").toString());
-            int start = (page - 1) * size;
-            query.setFirstResult(start);
-            query.setMaxResults(size);
-
-        }
-
-        return query.getResultList();
     }
 
     @Override

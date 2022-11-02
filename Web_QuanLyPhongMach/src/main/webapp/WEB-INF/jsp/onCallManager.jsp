@@ -236,7 +236,7 @@
     window.onload = function () {
         getEmployeeOncal("${u}"),
                 getOnCall("${ocl}");
-    }
+    };
 </script>
 
 <script>

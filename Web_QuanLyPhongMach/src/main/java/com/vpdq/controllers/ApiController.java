@@ -51,7 +51,7 @@ public class ApiController {
 //  API-Que
     @GetMapping("/medicines")
     public ResponseEntity<List<Object[]>> listMedicine() {
-        //api/medicines lấy danh sách thuốc phục vụ cho admin/medicines
+        // lấy danh sách thuốc phục vụ cho admin/medicinesManager
         if (Search.getParam().isEmpty() == false) {
             return new ResponseEntity<>(this.medicineService.getMedicines(Search.getParam(), 0), HttpStatus.OK);
         } else {
@@ -59,15 +59,11 @@ public class ApiController {
         }
     }
 
+    //xoá thuốc
     @DeleteMapping("/medicines/{medicineId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteMedicine(@PathVariable(value = "medicineId") int id) {
         this.medicineService.deleteMedicine(id);
-    }
-
-    @GetMapping("/username")
-    public ResponseEntity<List<User>> listUserName() {
-        return new ResponseEntity<>(this.userService.getAllUsername(), HttpStatus.OK);
     }
 
     @GetMapping("/prescription")
@@ -75,7 +71,6 @@ public class ApiController {
         return new ResponseEntity<>(this.prescriptionService.getPrescription(), HttpStatus.OK);
     }
 
-    
     @GetMapping("/employeesManager")
     public ResponseEntity<List<User>> list() {
         return new ResponseEntity<>(this.userService.getUserEmployee(null, 0), HttpStatus.OK);
@@ -110,6 +105,7 @@ public class ApiController {
 
         User e = (User) session.getAttribute("currentUser");
 
+        //nếu là bác sĩ thì nạp phiếu đã xác nhận
         if (e.getUserRole().equals("ROLE_DOCTOR")) {
             return new ResponseEntity<>(this.appointmentService.getAppointment(-1), HttpStatus.OK);
         }  //nếu là y tá thì nạp phiếu có trạng thái chưa xác nhận
@@ -131,6 +127,7 @@ public class ApiController {
     @Autowired
     private OnCallService onCallService;
 
+    //xoá lịch trực
     @DeleteMapping("/onCallManager/{onCallId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteOncall(@PathVariable(value = "onCallId") int onCallId) {
@@ -142,6 +139,7 @@ public class ApiController {
         return new ResponseEntity<>(this.onCallService.getOnCallView(null, 0), HttpStatus.OK);
     }
 
+    //MedicalRecord-------------------
     @GetMapping("/medi")
     public ResponseEntity<List<Object[]>> listMedi() {
         return new ResponseEntity<>(this.medicalRecordService.getMedicalRecordForPayment(), HttpStatus.OK);
@@ -152,12 +150,10 @@ public class ApiController {
         return new ResponseEntity<>(this.medicalRecordService.getMedicalRecordForPaymentByID(43), HttpStatus.OK);
     }
 
-    //MedicalRecord-------------------
     @GetMapping("/medicalRecordByIdCustomer")
     public ResponseEntity<List<Object[]>> medicalRecordByIdCustomer() {
         return new ResponseEntity<>(this.medicalRecordService.getMedicalRecordByIdCustomer(), HttpStatus.OK);
     }
-    
     
     //xem thuốc trong toa thuốc
     @GetMapping("/medicineInPre/{medicalRecordID}")
@@ -165,13 +161,10 @@ public class ApiController {
         return new ResponseEntity<>(this.prescriptionService.getPreByMedicalRecordID(medicalRecordID), HttpStatus.OK);
     }
     
-    
     //xoá thuốc trong khi kê toa
     @DeleteMapping("/medicineInPre/{medicalRecordID}/{preID}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteMedicineInPre(@PathVariable(value = "preID") int preID) {
         this.prescriptionService.deleteMedicineInPrescription(preID);
     }
-
-
 }

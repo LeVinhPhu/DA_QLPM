@@ -38,12 +38,10 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
         s.setId(1);
         a.setStatusId(s);
 
-        try
-        {
+        try {
             session.save(a);
             return true;
-        } catch (HibernateException ex)
-        {
+        } catch (HibernateException ex) {
             System.err.println(ex.getMessage());
         }
         return false;
@@ -63,15 +61,13 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
                 b.equal(aRoot.get("statusId"), sRoot.get("id")),
                 b.equal(aRoot.get("statusId"), 1));
 
-        if (idCus < 0)
-        {
+        if (idCus < 0) {
             q.where(b.equal(aRoot.get("customerId"), cRoot.get("id")),
                     b.equal(aRoot.get("statusId"), sRoot.get("id")),
                     b.equal(aRoot.get("statusId"), 2));
         }
 
-        if (idCus > 0)
-        {
+        if (idCus > 0) {
             q.where(b.equal(aRoot.get("customerId"), cRoot.get("id")),
                     b.equal(aRoot.get("statusId"), sRoot.get("id")),
                     b.equal(cRoot.get("id"), idCus),
@@ -97,13 +93,11 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
     public boolean deleteAppointment(int id) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
 
-        try
-        {
+        try {
             Appointment a = session.get(Appointment.class, id);
             session.delete(a);
             return true;
-        } catch (Exception ex)
-        {
+        } catch (Exception ex) {
             ex.printStackTrace();
             return false;
         }
@@ -117,12 +111,10 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
         Status s = new Status();
         s.setId(status);
         a.setStatusId(s);
-        try
-        {
+        try {
             session.update(a);
             return true;
-        } catch (Exception ex)
-        {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return false;

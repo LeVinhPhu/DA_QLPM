@@ -405,7 +405,7 @@
         frequencyMedicineUsageStatsByYear(labels, data);
         frequencyMedicineUsageStatsByQuarter(labels2, data2);
         frequencyMedicineUsageStatsByMonth(labels3, data3);
-    }
+    };
 </script>
 
 

@@ -388,8 +388,6 @@
 </div>
 
 
-
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="<c:url value="/js/statistic.js" />"></script>
 <script>
@@ -418,7 +416,7 @@
         revenueStats(labels, data);
         revenueStatsByQuarter(labels2, data2);
         revenueStatsByMonth(labels3, data3);
-    }
+    };
 </script>
 
 

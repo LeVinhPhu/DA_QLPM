@@ -259,7 +259,7 @@
                                         <option value="ROLE_NURSE">Y tá</option>
                                     </form:select>
                                     <label for="userRole" class="form-label">Chức vụ:</label>
-                                    <!--Sinh lổi-->
+                                    <!--Sinh lỗi-->
                                     <small></small>
                                 </div>
                             </div>

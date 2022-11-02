@@ -140,7 +140,6 @@
                         <div class="form-floating input-row">
                             <form:input type="text" path="name" class="form-control" id="name" placeholder="Nhap ten" name="name" />
                             <label for="name">Tên thuốc <span style="color: red">*</span></label>
-                            <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                             <small></small>
                         </div>
 
@@ -156,7 +155,6 @@
                         <div class="form-floating input-row">
                             <form:input type="number" path="unitPrice" class="form-control" id="unitPrice" placeholder="Nhap gia" name="unitPrice" />
                             <label for="unitPrice">Đơn giá <span style="color: red">*</span></label>
-                            <%--<form:errors path="unitPrice" element="div" cssClass="alert alert-danger" />--%>
                             <small></small>
                         </div>
 

@@ -21,7 +21,6 @@ public class HomeController {
         return "login";
     }
 
-
     @GetMapping("/home")
     public String uѕerGuide(Model model) {
         return "home";

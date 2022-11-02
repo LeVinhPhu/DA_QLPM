@@ -39,6 +39,7 @@ public class UserController {
         return "register";
     }
 
+    //đăng ký tài khoản
     @PostMapping("/register")
     public String registers(Model model,
             @ModelAttribute(value = "customers") @Valid User customer, BindingResult rs) {
@@ -51,65 +52,54 @@ public class UserController {
         String errMsg2 = "";
         String errMsg3 = "";
 
-        if (rs.hasErrors())
-        {
-            if (this.userService.checkUsernameExists(customer.getUsername()) == true)
-            {
+        if (rs.hasErrors()) {
+            if (this.userService.checkUsernameExists(customer.getUsername()) == true) {
                 errMsg2 = "Tên tài khoản đã tồn tại.";
                 model.addAttribute("errMsg2", errMsg2);
             }
-            if (customer.getConfirmPassword().isEmpty() == false && customer.getPassword().equals(customer.getConfirmPassword()) == false)
-            {
+            if (customer.getConfirmPassword().isEmpty() == false && customer.getPassword().equals(customer.getConfirmPassword()) == false) {
                 errMsg = "Mật khẩu xác nhận không chính xác.";
                 model.addAttribute("errMsg", errMsg);
             }
-            if (day2 != null && day.compareTo(day2) < 0)
-            {
+            if (day2 != null && day.compareTo(day2) < 0) {
                 errMsg3 = "Ngày sinh không hợp lệ.";
                 model.addAttribute("errMsg3", errMsg3);
             }
             return "register";
         }
 
-        if (day.compareTo(day2) < 0)
-        {
+        if (day.compareTo(day2) < 0) {
             errMsg3 = "Ngày sinh không hợp lệ.";
             model.addAttribute("errMsg3", errMsg3);
-            if (this.userService.checkUsernameExists(customer.getUsername()) == true)
-            {
+            if (this.userService.checkUsernameExists(customer.getUsername()) == true) {
                 errMsg2 = "Tên tài khoản đã tồn tại.";
                 model.addAttribute("errMsg2", errMsg2);
             }
-            if (customer.getPassword().equals(customer.getConfirmPassword()) == false)
-            {
+            if (customer.getPassword().equals(customer.getConfirmPassword()) == false) {
                 errMsg = "Mật khẩu xác nhận không chính xác.";
                 model.addAttribute("errMsg", errMsg);
             }
             return "register";
         }
 
-        if (this.userService.checkUsernameExists(customer.getUsername()) == true)
-        {
+        if (this.userService.checkUsernameExists(customer.getUsername()) == true) {
             errMsg2 = "Tên tài khoản đã tồn tại.";
             model.addAttribute("errMsg2", errMsg2);
             return "register";
         }
         
-        if (customer.getPassword().equals(customer.getConfirmPassword()))
-        {
+        if (customer.getPassword().equals(customer.getConfirmPassword())) {
             customer.setUserRole("ROLE_CUSTOMER");
             customer.setPosition("Khách hàng");
             if (this.userService.addUser(customer) == true)
             {
                 return "redirect:/login";
             }
-        } else
-        {
+        } else {
             errMsg = "Mật khẩu xác nhận không chính xác.";
             model.addAttribute("errMsg", errMsg);
         }
 
         return "register";
     }
-
 }

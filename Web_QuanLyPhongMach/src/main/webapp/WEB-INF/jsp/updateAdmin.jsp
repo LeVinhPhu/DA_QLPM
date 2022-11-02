@@ -38,7 +38,6 @@
             <div class="input-row form-floating">
                 <form:input type="date" class="form-control" path="dateOfBirth" id="dateOfBirth"/>
                 <label for="dateOfBirth">Ngày Sinh:</label>
-                <!--Sinh lổi-->
                 <small></small>
             </div> 
         </div>
@@ -63,7 +62,6 @@
                     </c:if>
                 </form:select>
                 <label for="sex" class="form-label">Giới Tính:</label>
-                <!--Sinh lổi-->
                 <small></small>
             </div>
         </div>
@@ -136,5 +134,5 @@
 <script>
     _today: function () {
         document.getElementById("dateOfBirth").value = ${adminUpdate.dateOfBirth}.format("MM/DD/YYYY");
-    }
+    };
 </script>

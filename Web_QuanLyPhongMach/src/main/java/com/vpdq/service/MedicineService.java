@@ -15,7 +15,6 @@ import java.util.Map;
 
 public interface MedicineService {
     List<Object[]> getMedicines(Map<String, String> params, int page);
-    List<Medicine> getMedicines2(Map<String, String> params, int page);
     boolean deleteMedicine(int id);
     boolean addMedicine(Medicine m);
     Medicine getMedicineByID(int id);

@@ -80,7 +80,6 @@
             <div class="form-floating input-row">
                 <form:input type="text" path="email" class="form-control" id="email" placeholder="Nhap email" name="email" />
                 <label for="email">Email:</label>
-                <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                 <small></small>
             </div>
         </div>
@@ -116,7 +115,6 @@
                     </c:if>
                 </form:select>
                 <label for="userRole" class="form-label">Chức vụ:</label>
-                <!--Sinh lổi-->
                 <small></small>
             </div>
         </div>
@@ -166,5 +164,5 @@
 <script>
     _today: function () {
         document.getElementById("dateOfBirth").value = ${adminUpdate.dateOfBirth}.format("MM/DD/YYYY");
-    }
+    };
 </script>

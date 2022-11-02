@@ -38,11 +38,6 @@ public class MedicineServiceImpl implements MedicineService {
     }
 
     @Override
-    public List<Medicine> getMedicines2(Map<String, String> params, int page) {
-        return this.medicineRepository.getMedicines2(params, page);
-    }
-
-    @Override
     public Medicine getMedicineByID(int id) {
         return this.medicineRepository.getMedicineByID(id);
     }

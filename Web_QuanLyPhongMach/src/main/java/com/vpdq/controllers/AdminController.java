@@ -26,7 +26,6 @@ import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Map;
 import javax.mail.MessagingException;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -278,8 +277,8 @@ public class AdminController {
     @RequestMapping("/reportsManager")
     public String reportsManager(Model model,
             @RequestParam(value = "year", defaultValue = "2022", required = false) int year,
-            @RequestParam(value = "year2", defaultValue = "2022", required = false) int year2
-    ) {
+            @RequestParam(value = "year2", defaultValue = "2022", required = false) int year2) {
+        
         model.addAttribute("total", this.medicalRecordService.totalRevenueStatistics());
         model.addAttribute("revenueStats", this.medicalRecordService.revenueStatistics());
         model.addAttribute("revenueStatsByQuarter", this.medicalRecordService.revenueStatisticsByQuarter(year));
@@ -312,8 +311,8 @@ public class AdminController {
     @RequestMapping("/reports2Manager")
     public String reports2Manager(Model model,
             @RequestParam(value = "year1", defaultValue = "2022", required = false) int year1,
-            @RequestParam(value = "year2", defaultValue = "2022", required = false) int year2
-    ) {
+            @RequestParam(value = "year2", defaultValue = "2022", required = false) int year2) {
+        
         model.addAttribute("patientStats", this.userService.patientStatistics());
         model.addAttribute("patientStatsByYear", this.userService.patientStatisticsByYear());
         model.addAttribute("patientStatsByQuarter", this.userService.patientStatisticsByQuater(year1));

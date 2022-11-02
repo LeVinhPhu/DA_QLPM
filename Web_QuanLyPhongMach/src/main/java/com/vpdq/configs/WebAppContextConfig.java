@@ -48,18 +48,6 @@ public class WebAppContextConfig implements WebMvcConfigurer {
         conf.enable();
     }
 
-//    //Tao View (chỉ sử dụng khi viết header, footer, content vào 1 file .jsp)
-//    @Bean
-//    public InternalResourceViewResolver viewResolver ()
-//    {
-//        InternalResourceViewResolver r = new InternalResourceViewResolver();
-//        
-//        r.setPrefix("/WEB-INF/jsp/"); // set cho chua view
-//        r.setSuffix(".jsp"); // set hau to file
-//        r.setViewClass(JstlView.class);
-//        
-//        return r;
-//    }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");

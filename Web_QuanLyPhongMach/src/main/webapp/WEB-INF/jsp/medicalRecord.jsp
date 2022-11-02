@@ -66,11 +66,19 @@
 
     <div class="col-md-9 col-12 mt-3 mb-4">
         <h2 class="mb-3" style="text-align: center">PHIẾU KHÁM BỆNH</h2>
-
-
+        <br>
+        <hr>
+        <div style="font-weight: bold">
+            Mã khách hàng: <c:out value="${cusID}" />
+        </div>
+        <div style="font-weight: bold">
+            Tên khách hàng: <c:out value="${nameCus}" />
+        </div>
+         <hr>
+        
         <c:url value="/employees/medicalRecord/${cusID}" var="action" />
         <form:form id="myForm" method="post" action="${action}" modelAttribute="medicalRecord" enctype="multipart/form-data">
-
+            
             <div class="form-floating input-row">
                 <form:select path="medicalServiceId" class="form-select" id="medicalServiceId" name="medicalServiceId">
                     <c:forEach items="${services}" var="s">
@@ -83,14 +91,12 @@
             <div class="form-floating input-row">
                 <form:input type="text" path="symptom" class="form-control" id="symptom" placeholder="Nhap trieu chung" name="name" />
                 <label for="name">Triệu chứng:</label>
-                <%--<form:errors path="name" element="div" cssClass="alert alert-danger" />--%>
                 <small></small>
             </div>
 
             <div class="form-floating input-row">
                 <form:input type="text" path="conclusion" class="form-control" id="conclusion" placeholder="Nhap ket luan benh" name="conclusion" />
                 <label for="conclusion">Kết luận:</label>
-                <%--<form:errors path="unitPrice" element="div" cssClass="alert alert-danger" />--%>
                 <small></small>
             </div>
 
@@ -105,3 +111,5 @@
         </form:form>
     </div>
 </div>
+
+<script src="<c:url value="/js/medicalRecord.js" />"></script>

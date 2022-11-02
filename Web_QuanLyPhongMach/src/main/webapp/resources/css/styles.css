@@ -17,7 +17,7 @@ tbody#myMedicine {
     overflow:scroll;
 }
 
-
+/*cấu hình lỗi*/
 .input-row {
     margin-bottom: 1.7rem;
     position: relative;
@@ -26,6 +26,7 @@ tbody#myMedicine {
 .input-row.error input {
     border-color: red;
 }
+
 .input-row small {
     color: red;
     position: absolute;
@@ -34,6 +35,7 @@ tbody#myMedicine {
     visibility: hidden;
     font-size: 14px;
 }
+
 .input-row.error small {
     visibility: visible;
 }

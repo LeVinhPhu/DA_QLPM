@@ -44,9 +44,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class EmployeeController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private MedicalServiceService medicalServiceService;
 
     @Autowired
@@ -60,6 +57,9 @@ public class EmployeeController {
 
     @Autowired
     private MedicineService medicineService;
+    
+    @Autowired
+    private UserService userService;
 
     //dung chung
     @ModelAttribute
@@ -84,6 +84,11 @@ public class EmployeeController {
     public String medicalRecord(Model model, @PathVariable(value = "cusID") int cusID) {
 
         model.addAttribute("medicalRecord", new MedicalRecord());
+        User user = this.userService.getUserByID(cusID);
+        model.addAttribute("cusID", cusID);
+        String name = user.getFirstName() + user.getLastName();
+        model.addAttribute("nameCus", name);
+        
         return "medicalRecord";
     }
 
@@ -199,6 +204,7 @@ public class EmployeeController {
         return "billsManagerForPayment";
     }
 
+    //thanh toán
     @PostMapping("/billsManager/{medicalRecordID}")
     public String payment(Model model, HttpSession session,
             @PathVariable(value = "medicalRecordID") int medicalRecordID,
@@ -220,6 +226,7 @@ public class EmployeeController {
         return "appointmentsManager";
     }
 
+    //xác nhận lịch khám
     @PostMapping("/appointmentsManager")
     public String ChangeStatusForAppointment(Model model,
             @RequestParam(value = "idAppointment", defaultValue = "0", required = false) int idAppointment) throws MessagingException, UnsupportedEncodingException {
@@ -230,6 +237,7 @@ public class EmployeeController {
 
         if (this.appointmentService.changeStatusAppointmentByID(idAppointment, 2)) {
             Object[] ob = this.appointmentService.getCusFromAppointmentById(idAppointment).get(0);
+            
             //Lấy ngày
             Date temp = (Date) ob[2];
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");

@@ -14,7 +14,7 @@
 
     <div class="col-md-7 col-12 ">
         <div class="">
-            <h2 style="font-family: fantasy;">P&Q CLINCI</h2>
+            <h2 style="font-family: fantasy;">P&Q CLINIC</h2>
             <h6 style="font-family: courier">Welcome ..........</h6>
         </div>
     </div>

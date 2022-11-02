@@ -26,9 +26,7 @@ public interface UserService extends UserDetailsService{
     boolean updateImageUser(int userId, String image);
 
     List<User> getUserByRole(Map<String, String> params, int page, String role);
-    
-    List<User> getAllUsername();
-    
+
     User getUserByUsername(String username);
     
     List<User> getUserEmployee(Map<String, String> params, int page);
